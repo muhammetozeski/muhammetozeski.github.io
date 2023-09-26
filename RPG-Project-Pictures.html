@@ -17,31 +17,45 @@
         .picture-label{
             text-align: center;
         }
+        .fraction {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="imgbox">
-        <p class="picture-label">picture 1/7 - <a href="https://muhammetozeski.github.io/Pictures/1,0.jpg" target="_blank">click here for opening the picture in new tab</a></p>
+        <p class="picture-label">Picture <span class="fraction">1/7</span> - <a href="https://muhammetozeski.github.io/Pictures/1,0.jpg" target="_blank">click here for opening the picture in new tab</a></p>
         <img src="Pictures/1,0.jpg" alt="picture">
         
-        <p class="picture-label">picture 2/7 - <a href="https://muhammetozeski.github.io/Pictures/1,5.jpg" target="_blank">click here for opening the picture in new tab</a></p>
+        <p class="picture-label">Picture <span class="fraction">2/7</span> - <a href="https://muhammetozeski.github.io/Pictures/1,5.jpg" target="_blank">click here for opening the picture in new tab</a></p>
         <img src="Pictures/1,5.jpg" alt="picture">
         
-        <p class="picture-label">picture 3/7 - <a href="https://muhammetozeski.github.io/Pictures/2.jpg" target="_blank">click here for opening the picture in new tab</a></p>
+        <p class="picture-label">Picture <span class="fraction">3/7</span> - <a href="https://muhammetozeski.github.io/Pictures/2.jpg" target="_blank">click here for opening the picture in new tab</a></p>
         <img src="Pictures/2.jpg" alt="picture">
         
-        <p class="picture-label">picture 4/7 - <a href="https://muhammetozeski.github.io/Pictures/3.jpg" target="_blank">click here for opening the picture in new tab</a></p>
+        <p class="picture-label">Picture <span class="fraction">4/7</span> - <a href="https://muhammetozeski.github.io/Pictures/3.jpg" target="_blank">click here for opening the picture in new tab</a></p>
         <img src="Pictures/3.jpg" alt="picture">
         
-        <p class="picture-label">picture 5/7 - <a href="https://muhammetozeski.github.io/Pictures/4.jpg" target="_blank">click here for opening the picture in new tab</a></p>
+        <p class="picture-label">Picture <span class="fraction">5/7</span> - <a href="https://muhammetozeski.github.io/Pictures/4.jpg" target="_blank">click here for opening the picture in new tab</a></p>
         <img src="Pictures/4.jpg" alt="picture">
         
-        <p class="picture-label">picture 6/7 - <a href="https://muhammetozeski.github.io/Pictures/5.jpg" target="_blank">click here for opening the picture in new tab</a></p>
+        <p class="picture-label">Picture <span class="fraction">6/7</span> - <a href="https://muhammetozeski.github.io/Pictures/5.jpg" target="_blank">click here for opening the picture in new tab</a></p>
         <img src="Pictures/5.jpg" alt="picture">
         
-        <p class="picture-label">picture 7/7 - <a href="https://muhammetozeski.github.io/Pictures/6.jpg" target="_blank">click here for opening the picture in new tab</a></p>
+        <p class="picture-label">Picture <span class="fraction">7/7</span> - <a href="https://muhammetozeski.github.io/Pictures/6.jpg" target="_blank">click here for opening the picture in new tab</a></p>
         <img src="Pictures/6.jpg" alt="picture">
     </div>
     
+    
 </body>
+<script>
+    var addLabel = ' - wait for pictures to load please, it may take a few seconds';
+    addLabel += '<a href="https://muhammetozeski.github.io/Pictures/collage.jpg" target="_blank"> - if it takes so long to load, click here to open low resulation images</a>';
+
+    var pictureLabels = document.querySelectorAll('.picture-label');
+
+    pictureLabels.forEach(function(label) {
+        label.innerHTML += addLabel;
+    });
+</script>
 </html>
