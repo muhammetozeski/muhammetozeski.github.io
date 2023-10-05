@@ -1,0 +1,30 @@
+<script>
+    // Örnek metin dosyasının URL'si
+const textFileURL = 'Assets\\Randomfacts.txt';
+
+// HTML belgesinin yüklendiğini bekleyin
+document.addEventListener('DOMContentLoaded', () => {
+  // Metin dosyasını fetch ile alın
+  fetch(textFileURL)
+    .then(response => response.text())
+    .then(data => {
+      // Dosyayı satırlara bölmek için yeni satır karakterini kullanın
+      const lines = data.split('\n');
+      
+      // Rastgele bir satır seçin
+      const randomIndex = Math.floor(Math.random() * lines.length);
+      const randomLine = lines[randomIndex];
+
+      // Yeni bir div elementi oluşturun ve içeriği bu satır olarak ayarlayın
+      const divElement = document.createElement('div');
+      divElement.textContent = randomLine;
+
+      // Belgeye bu yeni div elementini ekleyin
+      document.body.appendChild(divElement);
+    })
+    .catch(error => {
+      console.error('Metin dosyası alınamadı:', error);
+    });
+});
+
+</script>
