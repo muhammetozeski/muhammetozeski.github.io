@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<base target="_blank">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Muhammet Mustafa Özeski - CV</title>
@@ -322,7 +323,7 @@ const DATA = {
       imageCaption: "Tasarladığım bir sahne",
       links: [ { label: "Görüntüle", href: "https://store.steampowered.com/app/1719480/The_Simple_Balance/", type: "steam" } ],
       bullets: [
-        "Proje sahibi (Kai Niklas) tarafından ~%65'i tamamlanmış bir oyunu yayınlanmış bir Steam sürümüne dönüştürmesi için baş geliştirici olarak işe alındım.",
+        "Proje sahibi (<a href=\"https://www.linkedin.com/in/kai-niklas-6990b494/\" style=\"color:var(--emerald-dark); text-decoration:underline;\">Kai Niklas</a>) tarafından ~%65'i tamamlanmış bir oyunu yayınlanmış bir Steam sürümüne dönüştürmesi için baş geliştirici olarak işe alındım.",
         "Kalan 5 bölümü, rastgele karşılaşma (random encounter) sistemini ve diğer oynanış sistemlerini oluşturdum, yeni görevler ve hikâyeler tasarlayıp ekledim, hataları düzelttim ve oyunu Temmuz 2025'te Steam'de yayınladım."
       ]
     }
@@ -499,7 +500,7 @@ const BADGE_BY_TYPE = {
 };
 
 /* ---------- render helpers ---------- */
-const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>");
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>").replace(/&lt;a (.*?)&gt;/g, "<a $1>").replace(/&lt;\/a&gt;/g, "</a>");
 
 /* ---------- click (tiklama) ikonlari ----------
    Boyut: :root --clickicon-size (TEK degisken, hepsi icin gecerli).
