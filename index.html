@@ -239,6 +239,8 @@
 </div>
 
 <script>
+const SHOW_LANG_BTN = true; // Set to false to hide the language button for PDF
+
 const DATA = {
   name: "Muhammet Mustafa Özeski",
   title: "C# Expert · Software Engineer",
@@ -253,8 +255,8 @@ const DATA = {
   summary: "C# expert and software engineer building production software since 2019, end to end across mobile, web, desktop and games. I architect systems — not just write features — and ship them to real users: I solo-architected and released a commercial cross-platform .NET MAUI Blazor Hybrid app to both the App Store and Google Play, and was lead developer on a commercial Unity game published on Steam. Strong across the whole C#/.NET stack (MAUI, Blazor, Windows desktop) and Unity, with a real track record in architecture, performance, concurrency, monetization, security/cryptography, and clean, thoroughly documented code.",
 
   contact: [
-    { label: "Email",          value: "muhammetozeski@gmail.com",            href: "mailto:muhammetozeski@gmail.com",            badge: "" },
-    // { label: "Phone",          value: "+90 551 503 48 77",                   href: "tel:+905515034877",                          badge: "" },
+    { label: "Website",        value: "muhammetozeski.github.io",            href: "https://muhammetozeski.github.io",           emoji: "🌐" },
+    { label: "Email",          value: "muhammetozeski@gmail.com",            href: "mailto:muhammetozeski@gmail.com",            emoji: "📧" },
     { label: "GitHub",         value: "github.com/muhammetozeski",           href: "https://github.com/muhammetozeski",          badge: "badges/github-icon.svg" },
     { label: "LinkedIn",       value: "linkedin.com/in/mmö",                 href: "https://www.linkedin.com/in/mm%C3%B6",        badge: "badges/linkedin-icon.svg" },
     { label: "Stack Overflow", value: "stackoverflow.com/users/14619963/mizi", href: "https://stackoverflow.com/users/14619963/mizi", badge: "badges/stackoverflow-icon.svg" },
@@ -504,7 +506,7 @@ function render(){
 
   const contact = d.contact.map((c,i)=>{
     const last = i === d.contact.length-1;
-    const ic = c.badge ? `<img src="${c.badge}" alt="">` : `<span class="dot"></span>`;
+    const ic = c.badge ? `<img src="${c.badge}" alt="">` : (c.emoji ? `<span style="font-size:12px; line-height:1; flex:0 0 auto;">${c.emoji}</span>` : `<span class="dot"></span>`);
     return `<a class="sbtn" href="${c.href}" target="_blank" rel="noopener">${ic}`
       + `<span class="tx"><b>${esc(c.label)}</b><span>${esc(c.value)}</span></span>`
       + (last ? clickIcon('contact') : "") + `</a>`;
@@ -546,7 +548,7 @@ function render(){
     <div class="side-title">${esc(d.title)}</div>
     <div class="side-sub">${esc(d.subtitle)}</div>
 
-    <h3>Contact</h3>
+    <h3>Links</h3>
     <div class="scontact">${contact}</div>
 
     <h3>Skills</h3>
@@ -629,7 +631,10 @@ function render(){
   const fnLinks = fn.links.map((l,i)=>linkBtn(l, i===fn.links.length-1, 'footnote')).join("");
   const footnote = `<div class="footnote"><span>${esc(fn.text)}</span><div class="btn-row">${fnLinks}</div></div>`;
 
+  const langBtn = SHOW_LANG_BTN ? `<div style="display:flex; justify-content:flex-end; margin-bottom:-10px; position:relative; z-index:10;"><a href="tr.html" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">Türkçe</a></div>` : "";
+
   document.getElementById("main").innerHTML = `
+    ${langBtn}
     <section>
       <div class="sec-head"><div class="num">1</div><h2>Profile</h2><div class="bar"></div></div>
       <div class="summary">${esc(d.summary)}</div>
