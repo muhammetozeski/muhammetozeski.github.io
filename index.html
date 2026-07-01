@@ -56,15 +56,17 @@
   .page{
     width:210mm; min-height:297mm; margin:14px auto; background:#fff;
     box-shadow:0 8px 40px rgba(6,60,40,.16);
-    display:grid; grid-template-columns:64mm 1fr;
+    display:block; padding-right:26px; padding-bottom:28px;
   }
   h1,h2,h3,h4{font-family:'Manrope',sans-serif; margin:0; letter-spacing:-.01em;}
   a{color:inherit; text-decoration:none;}
 
   /* ===== Sidebar ===== */
   .side{
+    float:left; width:64mm;
     background:linear-gradient(180deg,var(--emerald-dark) 0%, var(--emerald-deep) 100%);
     color:var(--side-ink); padding:24px 18px 26px;
+    margin-right:26px; margin-bottom:26px;
   }
   .side .photo, .side .photo-fallback{
     width:118px; height:118px; border-radius:14px; object-fit:cover; display:block;
@@ -125,7 +127,7 @@
   .side-lang .l span{font-size:9px; color:var(--side-muted);}
 
   /* ===== Main ===== */
-  .main{padding:24px 26px 28px;}
+  .main{padding-top:24px; padding-left:26px; display:block;}
   section{margin-bottom:18px;}
   .sec-head{display:flex; align-items:center; gap:9px; margin-bottom:11px;}
   .sec-head .num{
@@ -139,7 +141,7 @@
   .summary{font-size:12px; color:var(--ink-soft); line-height:1.6;}
 
   .card{background:#fff; border:1px solid var(--line); border-radius:11px; padding:14px 15px;
-    box-shadow:var(--shadow); break-inside:avoid;}
+    box-shadow:var(--shadow); break-inside:avoid; overflow:hidden;}
   .card + .card{margin-top:11px;}
   .feat{border-left:4px solid var(--emerald); background:var(--emerald-soft);}
   .exp-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px;}
@@ -195,10 +197,14 @@
   .side-kp li::before{content:"\2713"; position:absolute; left:1px; top:0; color:#5EE0A8; font-weight:800; font-size:10px;}
 
   /* projects */
-  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:11px;}
+  .proj-grid{display:block; margin-top:11px;}
   .proj{background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden;
-    box-shadow:var(--shadow); break-inside:avoid; display:flex; flex-direction:column;}
+    box-shadow:var(--shadow); break-inside:avoid; display:inline-flex; flex-direction:column;
+    width:236px; margin-right:11px; margin-bottom:11px; vertical-align:top;}
   .proj-img{width:100%; height:96px; object-fit:cover; background:#eef2f0; display:block; border-bottom:1px solid var(--line);}
+  .proj-img-multi{display:flex; width:100%; height:96px; background:#eef2f0; border-bottom:1px solid var(--line);}
+  .proj-img-multi img{flex:1; min-width:0; object-fit:cover; border-right:1px solid var(--line);}
+  .proj-img-multi img:last-child{border-right:none;}
   .proj-body{padding:10px 11px 11px; display:flex; flex-direction:column; flex:1;}
   .proj-name{font-size:12.5px; font-weight:800; color:var(--ink);}
   .proj-kind{font-size:9.5px; font-weight:600; color:var(--accent); margin-top:2px;}
@@ -281,12 +287,12 @@ const DATA = {
       ],
       oneLine: "A commercial language-learning app I solo-architected and shipped to both stores (v4.0.0) - ~19.6K lines across 217 source files, re-engineered from an existing Flutter app onto an architecture of my own design.",
       bullets: [
-        "Solo-architected and shipped a commercial cross-platform app to the App Store and Google Play; designed the structure of all 217 source files and every screen myself.",
-        "Designed a custom inheritance-based Blazor page architecture (after rejecting MVVM as a poor fit for MAUI Blazor Hybrid) and solved the non-obvious dual-instance lifecycle bugs the framework does not guard against.",
-        "Built idempotent, crash-recoverable In-App Purchases over Google Play Billing v8 and Apple StoreKit - and caught and fixed a real money-losing concurrency race in the wallet with a single serialization lock.",
-        "Engineered a unified cross-platform native event hub over the Android and iOS lifecycles; verified the full iOS build on Windows by reading MAUI's package metadata via reflection.",
-        "Built an offline-first cloud library on Firebase (Auth, Firestore, Cloud Storage, FCM) with two-tier caching, version-gated delta sync, and Polly-based resilient I/O with enforced timeouts.",
-        "Built a fully C#-driven design-token system, a custom on-device test harness with branch-specific root-cause diagnostics, and maintained design specs, a pre-release audit, and a 33-entry engineering journal."
+        "Solo-architected and shipped a <b>commercial cross-platform app</b> to the App Store and Google Play; designed the structure of all 217 source files and every screen myself.",
+        "Designed a <b>custom inheritance-based Blazor page architecture</b> (after rejecting MVVM as a poor fit for MAUI Blazor Hybrid) and solved the non-obvious dual-instance lifecycle bugs the framework does not guard against.",
+        "Built <b>idempotent, crash-recoverable In-App Purchases</b> over Google Play Billing v8 and Apple StoreKit - and caught and fixed a real money-losing concurrency race in the wallet with a single serialization lock.",
+        "Engineered a <b>unified cross-platform native event hub</b> over the Android and iOS lifecycles; verified the full iOS build on Windows by reading MAUI's package metadata via reflection.",
+        "Built an <b>offline-first cloud library on Firebase</b> (Auth, Firestore, Cloud Storage, FCM) with two-tier caching, version-gated delta sync, and Polly-based resilient I/O with enforced timeouts.",
+        "Built a <b>fully C#-driven design-token system</b>, a custom on-device test harness with branch-specific root-cause diagnostics, and maintained design specs, a pre-release audit, and a 33-entry engineering journal."
       ]
     },
     {
@@ -334,14 +340,14 @@ const DATA = {
     },
     {
       name: "Codec2Player", kind: "Java · Android", tags: ["Android", "Performance", "Low-level"], dates: "Jun 2026",
-      image: "resimler/Codec2Player.png",
+      image: ["resimler/player.png", "resimler/playing.png", "resimler/settings.png"],
       desc: "Developed an ultra-minimalist Android audio player prioritizing the absolute smallest installed footprint on the device (~20 KB installed). Discovered and utilized a mechanism to bypass Android's ART 'dex2oat' compilation, ensuring the installed size on the device remains strictly identical to the raw APK size.",
       links: [ { label: "Source Code", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" } ]
     },
     {
       name: "The Don't Fall", kind: "C# · Unity Game", tags: ["2D", "Platformer"], dates: "Jun 2023 – Sep 2023",
       image: "resimler/image%20(5).webp",
-      desc: "A dynamic 2D platformer showcasing <b>advanced mechanics and level design</b>. Engineered tight, responsive 2D movement and crafted challenging levels from scratch to deliver an engaging gameplay loop.",
+      desc: "Developed a robust 2D platformer emphasizing <b>precision-based movement mechanics</b> and challenging level design. Engineered a custom physics controller for responsive jumping and collision detection. Designed intricate platforming sequences, implementing state-driven animations, moving platforms, and scalable scene management for an optimized gameplay experience.",
       links: [
         { label: "Source Code",    href: "https://github.com/muhammetozeski/DontFall", type: "github" },
         { label: "Try It",         href: "https://fivza.itch.io/dont-fall", type: "itch" },
@@ -495,7 +501,7 @@ const BADGE_BY_TYPE = {
 };
 
 /* ---------- render helpers ---------- */
-const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>");
 
 /* ---------- click (tiklama) ikonlari ----------
    Boyut: :root --clickicon-size (TEK degisken, hepsi icin gecerli).
@@ -702,4 +708,9 @@ render();
 </script>
 </body>
 </html>
+
+
+
+
+
 

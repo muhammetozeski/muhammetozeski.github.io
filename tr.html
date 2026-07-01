@@ -56,15 +56,17 @@
   .page{
     width:210mm; min-height:297mm; margin:14px auto; background:#fff;
     box-shadow:0 8px 40px rgba(6,60,40,.16);
-    display:grid; grid-template-columns:64mm 1fr;
+    display:block; padding-right:26px; padding-bottom:28px;
   }
   h1,h2,h3,h4{font-family:'Manrope',sans-serif; margin:0; letter-spacing:-.01em;}
   a{color:inherit; text-decoration:none;}
 
   /* ===== Sidebar ===== */
   .side{
+    float:left; width:64mm;
     background:linear-gradient(180deg,var(--emerald-dark) 0%, var(--emerald-deep) 100%);
     color:var(--side-ink); padding:24px 18px 26px;
+    margin-right:26px; margin-bottom:26px;
   }
   .side .photo, .side .photo-fallback{
     width:118px; height:118px; border-radius:14px; object-fit:cover; display:block;
@@ -125,7 +127,7 @@
   .side-lang .l span{font-size:9px; color:var(--side-muted);}
 
   /* ===== Main ===== */
-  .main{padding:24px 26px 28px;}
+  .main{padding-top:24px; padding-left:26px; display:block;}
   section{margin-bottom:18px;}
   .sec-head{display:flex; align-items:center; gap:9px; margin-bottom:11px;}
   .sec-head .num{
@@ -139,7 +141,7 @@
   .summary{font-size:12px; color:var(--ink-soft); line-height:1.6;}
 
   .card{background:#fff; border:1px solid var(--line); border-radius:11px; padding:14px 15px;
-    box-shadow:var(--shadow); break-inside:avoid;}
+    box-shadow:var(--shadow); break-inside:avoid; overflow:hidden;}
   .card + .card{margin-top:11px;}
   .feat{border-left:4px solid var(--emerald); background:var(--emerald-soft);}
   .exp-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px;}
@@ -195,10 +197,14 @@
   .side-kp li::before{content:"\2713"; position:absolute; left:1px; top:0; color:#5EE0A8; font-weight:800; font-size:10px;}
 
   /* projects */
-  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:11px;}
+  .proj-grid{display:block; margin-top:11px;}
   .proj{background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden;
-    box-shadow:var(--shadow); break-inside:avoid; display:flex; flex-direction:column;}
+    box-shadow:var(--shadow); break-inside:avoid; display:inline-flex; flex-direction:column;
+    width:236px; margin-right:11px; margin-bottom:11px; vertical-align:top;}
   .proj-img{width:100%; height:96px; object-fit:cover; background:#eef2f0; display:block; border-bottom:1px solid var(--line);}
+  .proj-img-multi{display:flex; width:100%; height:96px; background:#eef2f0; border-bottom:1px solid var(--line);}
+  .proj-img-multi img{flex:1; min-width:0; object-fit:cover; border-right:1px solid var(--line);}
+  .proj-img-multi img:last-child{border-right:none;}
   .proj-body{padding:10px 11px 11px; display:flex; flex-direction:column; flex:1;}
   .proj-name{font-size:12.5px; font-weight:800; color:var(--ink);}
   .proj-kind{font-size:9.5px; font-weight:600; color:var(--accent); margin-top:2px;}
@@ -281,12 +287,12 @@ const DATA = {
       ],
       oneLine: "Tek başıma tasarlayıp her iki mağazaya da yayınladığım ticari bir dil öğrenme uygulaması (v4.0.0) - 217 kaynak dosyada ~19,6 bin satır; mevcut bir Flutter uygulamasından, kendi tasarladığım bir mimari üzerine yeniden inşa edildi.",
       bullets: [
-        "Ticari, çok platformlu bir uygulamayı tek başıma tasarlayıp App Store ve Google Play'de yayınladım; 217 kaynak dosyanın tamamının yapısını ve her ekranı kendim tasarladım.",
-        "MVVM'i MAUI Blazor Hybrid için uygun bulmayıp eledikten sonra, kalıtım tabanlı özel bir Blazor sayfa mimarisi tasarladım ve framework'ün önlem almadığı, kolay fark edilmeyen çift örnekli yaşam döngüsü hatalarını çözdüm.",
-        "Google Play Billing v8 ve Apple StoreKit üzerinde, çökme sonrası kurtarılabilen, tekrarı güvenli (idempotent) uygulama içi satın alma altyapısı kurdum; cüzdanda gerçekten para kaybettiren bir eşzamanlılık yarışını tek bir sıralama kilidiyle yakalayıp düzelttim.",
-        "Android ve iOS yaşam döngüleri üzerine, çok platformlu ve birleşik bir yerel olay merkezi geliştirdim; iOS derlemesinin tamamını, MAUI'nin paket bilgilerini yansıma (reflection) ile okuyarak Windows üzerinde doğruladım.",
-        "Firebase (Auth, Firestore, Cloud Storage, FCM) üzerinde önce çevrimdışı çalışan bir bulut kütüphanesi kurdum; iki katmanlı önbellek, sürüm denetimli artımlı eşitleme ve zaman aşımı zorunlu, Polly tabanlı dayanıklı veri giriş/çıkışı içeriyor.",
-        "Tamamen C# ile yürütülen bir tasarım birimi (design-token) sistemi ve cihaz üzerinde çalışan, soruna özel kök neden teşhisi yapan özel bir test düzeneği kurdum; ayrıca tasarım belgeleri, yayın öncesi bir denetim ve 33 girdilik bir mühendislik günlüğü tuttum."
+        "Ticari, çok platformlu bir uygulamayı tek başıma tasarlayıp App Store ve Google Play'de yayınladım; <b>217 kaynak dosyanın</b> tamamının yapısını ve her ekranı kendim tasarladım.",
+        "MVVM'i MAUI Blazor Hybrid için uygun bulmayıp eledikten sonra, <b>kalıtım tabanlı özel bir Blazor sayfa mimarisi</b> tasarladım ve framework'ün önlem almadığı, kolay fark edilmeyen çift örnekli yaşam döngüsü hatalarını çözdüm.",
+        "Google Play Billing v8 ve Apple StoreKit üzerinde, <b>çökme sonrası kurtarılabilen, tekrarı güvenli (idempotent) uygulama içi satın alma</b> altyapısı kurdum; cüzdanda gerçekten para kaybettiren bir eşzamanlılık yarışını tek bir sıralama kilidiyle yakalayıp düzelttim.",
+        "Android ve iOS yaşam döngüleri üzerine, <b>çok platformlu ve birleşik bir yerel olay merkezi</b> geliştirdim; iOS derlemesinin tamamını, MAUI'nin paket bilgilerini yansıma (reflection) ile okuyarak Windows üzerinde doğruladım.",
+        "Firebase (Auth, Firestore, Cloud Storage, FCM) üzerinde önce <b>çevrimdışı çalışan bir bulut kütüphanesi</b> kurdum; iki katmanlı önbellek, sürüm denetimli artımlı eşitleme ve zaman aşımı zorunlu, Polly tabanlı dayanıklı veri giriş/çıkışı içeriyor.",
+        "Tamamen C# ile yürütülen bir <b>tasarım birimi (design-token) sistemi</b> ve cihaz üzerinde çalışan, soruna özel kök neden teşhisi yapan özel bir test düzeneği kurdum; ayrıca tasarım belgeleri, yayın öncesi bir denetim ve 33 girdilik bir mühendislik günlüğü tuttum."
       ]
     },
     {
@@ -334,14 +340,14 @@ const DATA = {
     },
     {
       name: "Codec2Player", kind: "Java · Android", tags: ["Android", "Performans", "Düşük-seviye"], dates: "Haz 2026",
-      image: "resimler/Codec2Player.png",
+      image: ["resimler/player.png", "resimler/playing.png", "resimler/settings.png"],
       desc: "Cihazda mutlak en küçük kurulu boyutu (yaklaşık 20 KB kurulu boyut) hedefleyen ultra minimalist bir Android ses çalar uygulaması geliştirdim. Android'in ART 'dex2oat' derlemesini atlamak için bir mekanizma keşfedip kullandım, böylece cihazdaki kurulu boyutun doğrudan ham APK boyutuyla tamamen aynı kalmasını sağladım.",
       links: [ { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" } ]
     },
     {
       name: "The Don't Fall", kind: "C# · Unity Oyunu", tags: ["2D", "Platform"], dates: "Haz 2023 – Eyl 2023",
       image: "resimler/image%20(5).webp",
-      desc: "<b>Gelişmiş mekanikleri ve bölüm tasarımını</b> sergileyen dinamik bir 2D platform oyunu. Akıcı ve tepkisel 2D hareket mekaniklerini kodladım ve sürükleyici bir oynanış döngüsü sunmak için zorlayıcı bölümleri sıfırdan tasarladım.",
+      desc: "<b>Hassas hareket mekaniklerine</b> ve zorlayıcı bölüm tasarımına odaklanan bir 2D platform oyunu geliştirdim. Tepkisel zıplama ve çarpışma tespiti için özel bir fizik denetleyicisi kodladım. Durum tabanlı animasyonlar, hareketli platformlar ve akıcı bir deneyim için ölçeklenebilir sahne yönetimi uygulayarak karmaşık platform dizilimleri tasarladım.",
       links: [
         { label: "Kaynak Kod",    href: "https://github.com/muhammetozeski/DontFall", type: "github" },
         { label: "Dene",         href: "https://fivza.itch.io/dont-fall", type: "itch" },
@@ -495,7 +501,7 @@ const BADGE_BY_TYPE = {
 };
 
 /* ---------- render helpers ---------- */
-const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>");
 
 /* ---------- click (tiklama) ikonlari ----------
    Boyut: :root --clickicon-size (TEK degisken, hepsi icin gecerli).
@@ -703,4 +709,8 @@ render();
 </script>
 </body>
 </html>
+
+
+
+
 
