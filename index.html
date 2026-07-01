@@ -1,1 +1,659 @@
-I want a gamedev job :)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhammet Mustafa Özeski — CV</title>
+<!--
+  ============================================================================
+  DÜZENLEME REHBERİ (Editing guide)
+  - Tüm içerik aşağıdaki <script> içindeki const DATA = {...} ve
+    const BADGE_BY_TYPE = {...} bloklarındadır. İçeriği değiştirmek için
+    SADECE DATA'yı düzenleyin; render() tüm sayfayı bundan kurar.
+  - Görseller/badge'ler yol ile referanslanır: resimler/... ve badges/...
+    (gömme/base64 yoktur). Dosya bu klasörlerle aynı dizinde olmalı.
+  - clickIcon (tıklama imleci) her buton GRUBUNDA yalnız 1 butonun sağ-alt
+    köşesine konur (iletişim, mağaza, her proje link satırı, tıklanabilir
+    yetenekler ve sistemler).
+  - PDF için: tarayıcıda Yazdır > Hedef: PDF, kenar boşluğu yok, arka plan
+    grafikleri açık. Tasarım B: iki sütun (sol kenar çubuğu), zümrüt
+    (#059669) accent, beyaz zemin.
+  ============================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald:#059669;
+    --emerald-dark:#065F46;
+    --emerald-deep:#04412F;
+    --emerald-soft:#ECFDF5;
+    --emerald-line:#C9EEDD;
+    --accent:#047857;
+    --ink:#14201B;
+    --ink-soft:#3C463F;
+    --muted:#6B746E;
+    --line:#E3E8E5;
+    --bg:#E9EDEA;
+    --side-ink:#E9FBF2;
+    --side-muted:#A9D9C5;
+    --shadow:0 1px 2px rgba(6,60,40,.05), 0 4px 12px rgba(6,60,40,.06);
+    /* ---- Tiklama (click) ikonlari ---- */
+    --clickicon-size:25px;        /* TEK degisken: tum click ikonlarinin boyutu */
+    --clickicon-offset-x:5px;     /* TUM click ikonlarini yatayda kaydirir (+ = saga) */
+    --clickicon-offset-y:5px;     /* TUM click ikonlarini dikeyde kaydirir (+ = asagi) */
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    font-size:12.5px; line-height:1.5;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .page{
+    width:210mm; min-height:297mm; margin:14px auto; background:#fff;
+    box-shadow:0 8px 40px rgba(6,60,40,.16);
+    display:grid; grid-template-columns:64mm 1fr;
+  }
+  h1,h2,h3,h4{font-family:'Manrope',sans-serif; margin:0; letter-spacing:-.01em;}
+  a{color:inherit; text-decoration:none;}
+
+  /* ===== Sidebar ===== */
+  .side{
+    background:linear-gradient(180deg,var(--emerald-dark) 0%, var(--emerald-deep) 100%);
+    color:var(--side-ink); padding:24px 18px 26px;
+  }
+  .side .photo, .side .photo-fallback{
+    width:118px; height:118px; border-radius:14px; object-fit:cover; display:block;
+    margin:0 auto 14px; border:3px solid rgba(255,255,255,.45);
+    box-shadow:0 6px 18px rgba(0,30,18,.4); background:#fff;
+  }
+  .side .photo-fallback{display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.14); font-family:'Manrope'; font-weight:800; font-size:42px; color:#fff;}
+  .side-name{font-size:20px; font-weight:800; text-align:center; color:#fff; line-height:1.12;}
+  .side-title{font-size:11.5px; font-weight:600; text-align:center; margin-top:6px; color:#9FE7CB;}
+  .side-sub{font-size:10px; text-align:center; margin-top:5px; color:var(--side-muted); line-height:1.45;}
+
+  .side h3{
+    font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.1em;
+    color:#7FD9B6; margin:18px 0 9px; padding-bottom:6px;
+    border-bottom:1px solid rgba(255,255,255,.16);
+  }
+  /* sidebar contact */
+  .scontact{display:flex; flex-direction:column; gap:7px; position:relative;}
+  .sbtn{
+    position:relative; display:flex; align-items:center; gap:9px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+    border-radius:8px; padding:7px 9px; color:#fff;
+  }
+  .sbtn img{width:15px; height:15px; flex:0 0 auto; filter:brightness(0) invert(1);}
+  .sbtn .tx{min-width:0;}
+  .sbtn .tx b{display:block; font-size:9px; font-weight:600; color:#8FDFC0; text-transform:uppercase; letter-spacing:.05em;}
+  .sbtn .tx span{display:block; font-size:10.5px; font-weight:500; color:#EAFBF3; word-break:break-all;}
+  .sbtn .dot{width:7px; height:7px; border-radius:2px; background:#34D399; flex:0 0 auto;}
+
+  /* sidebar skills */
+  .sgroup{margin-bottom:13px;}
+  .sgroup h4{font-size:10.5px; font-weight:700; color:#CFF3E3; margin-bottom:6px;}
+  .schips{display:flex; flex-wrap:wrap; gap:5px; position:relative;}
+  .schip{font-size:9.7px; font-weight:500; color:var(--side-ink); background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.15); border-radius:6px; padding:3px 7px;}
+  .schip.link{position:relative; color:#063; background:#A7F3D0; border:1px solid #6EE7B7; font-weight:700;
+    display:inline-flex; align-items:center; gap:5px;}
+  .schip.link img{height:11px; width:auto;}
+
+  .ssys{display:flex; flex-direction:column; gap:5px; position:relative;}
+  .ssys .it{font-size:10px; color:var(--side-ink); background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.14); border-radius:6px; padding:5px 8px;
+    display:flex; align-items:center; gap:7px;}
+  .ssys .it::before{content:""; width:6px; height:6px; border-radius:2px; background:#5EE0A8; flex:0 0 auto;}
+  .ssys a.it{position:relative; color:#053; background:#A7F3D0; border:1px solid #6EE7B7; font-weight:700;}
+  .ssys a.it::before{background:#047857;}
+  .ssys a.it img{height:12px; margin-left:auto; width:auto;}
+
+  .side-edu{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:9px; padding:11px;}
+  .side-edu .deg{font-size:11px; font-weight:700; color:#fff; line-height:1.3;}
+  .side-edu .ln{font-size:9.7px; color:var(--side-muted); margin-top:4px; line-height:1.4;}
+  .side-edu .mt{display:flex; gap:6px; flex-wrap:wrap; margin-top:7px;}
+  .side-edu .mt span{font-size:9px; font-weight:600; color:#063; background:#A7F3D0; border-radius:5px; padding:2px 7px;}
+  .side-lang{display:flex; gap:7px; margin-top:9px;}
+  .side-lang .l{flex:1; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:7px; padding:6px 8px;}
+  .side-lang .l b{display:block; font-size:10.5px; color:#fff; font-family:'Manrope'; font-weight:700;}
+  .side-lang .l span{font-size:9px; color:var(--side-muted);}
+
+  /* ===== Main ===== */
+  .main{padding:24px 26px 28px;}
+  section{margin-bottom:18px;}
+  .sec-head{display:flex; align-items:center; gap:9px; margin-bottom:11px;}
+  .sec-head .num{
+    width:21px; height:21px; border-radius:6px; background:var(--emerald);
+    color:#fff; font-family:'Manrope'; font-weight:800; font-size:11px;
+    display:flex; align-items:center; justify-content:center; flex:0 0 auto;
+  }
+  .sec-head h2{font-size:14px; font-weight:800; color:var(--emerald-dark); text-transform:uppercase; letter-spacing:.05em;}
+  .sec-head .bar{height:2px; flex:1; background:var(--emerald-line); border-radius:2px;}
+
+  .summary{font-size:12px; color:var(--ink-soft); line-height:1.6;}
+
+  .card{background:#fff; border:1px solid var(--line); border-radius:11px; padding:14px 15px;
+    box-shadow:var(--shadow); break-inside:avoid;}
+  .card + .card{margin-top:11px;}
+  .feat{border-left:4px solid var(--emerald); background:var(--emerald-soft);}
+  .exp-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px;}
+  .feat-badge{display:inline-block; font-size:8.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+    color:#fff; background:var(--emerald); padding:3px 8px; border-radius:5px; margin-bottom:6px;}
+  .exp-name{font-size:15px; font-weight:800; color:var(--ink);}
+  .exp-role{font-size:11px; font-weight:600; color:var(--accent); margin-top:3px;}
+  .exp-dates{font-size:10px; font-weight:700; color:var(--muted); white-space:nowrap; text-align:right;}
+  .exp-note{font-size:9.5px; color:var(--muted); margin-top:2px; text-align:right;}
+  .exp-oneline{font-size:11.5px; color:var(--ink-soft); margin-top:8px; line-height:1.55;}
+  ul.bullets{margin:8px 0 0; padding:0; list-style:none;}
+  ul.bullets li{position:relative; padding-left:16px; font-size:11px; color:var(--ink-soft); margin-bottom:5px; line-height:1.5;}
+  ul.bullets li::before{content:""; position:absolute; left:1px; top:6px; width:7px; height:7px;
+    border:2px solid var(--emerald); border-radius:50%;}
+
+  .btn-row{display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; position:relative;}
+  .store-badge{position:relative; display:inline-block;}
+  .store-badge img{height:38px; display:block;}
+  .lbtn{position:relative; display:inline-flex; align-items:center; gap:6px; background:#fff;
+    border:1px solid var(--emerald-line); color:var(--accent); border-radius:7px; padding:5px 10px;
+    font-size:10.5px; font-weight:600;}
+  .lbtn img{height:14px; width:auto; display:block;}
+  /* "View on Steam": steam wordmark SVG'nin "STEAM" yazisi siyah; koyu zeminde
+     gozukmedigi icin acik bir steam-mavisi zemin secildi. */
+  .lbtn.steam{background:#e8f1fb; border-color:#c4d8ee; color:#1b3a5b;}
+  .lbtn.steam img{height:15px;}
+
+  /* width/height !important: kapsayici buton img kurallari (.sbtn img, .store-badge img,
+     .lbtn img ...) ezmesin diye — boylece TUM click ikonlari tek --clickicon-size'dan gelir.
+     Konum: global --clickicon-offset-x/y (hepsini birden kaydirir) + her ikonun kendi
+     --clickicon-dx/dy degeri (sadece o ikonu kaydirir, normalde 0). */
+  .clickicon{position:absolute; right:0; bottom:0;
+    width:var(--clickicon-size) !important; height:var(--clickicon-size) !important;
+    transform:translate(
+      calc(7px + var(--clickicon-offset-x) + var(--clickicon-dx,0px)),
+      calc(7px + var(--clickicon-offset-y) + var(--clickicon-dy,0px)));
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.3)); pointer-events:none;}
+
+  /* experience media — gorseller kart icinde ana yazinin ustunde */
+  .exp-shots{display:flex; justify-content:center; align-items:flex-start; gap:26px;
+    flex-wrap:wrap; margin:11px 0 4px;}
+  .exp-shots img{height:228px; width:auto; border-radius:14px; background:#fff;
+    border:1px solid var(--emerald-line); box-shadow:0 6px 18px rgba(6,60,40,.20); display:block;}
+  .exp-figure{margin:11px 0 4px;}
+  .exp-figure img{width:100%; height:176px; object-fit:cover; border-radius:10px;
+    border:1px solid var(--line); box-shadow:var(--shadow); display:block;}
+  .exp-figure figcaption{font-size:9.5px; font-style:italic; color:var(--muted);
+    text-align:center; margin-top:5px;}
+
+  /* sidebar'a tasinan Core strengths + Key points */
+  .side-kp{list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; gap:6px;}
+  .side-kp li{position:relative; padding-left:17px; font-size:9.8px; color:var(--side-ink); line-height:1.42;}
+  .side-kp li::before{content:"\2713"; position:absolute; left:1px; top:0; color:#5EE0A8; font-weight:800; font-size:10px;}
+
+  /* projects */
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:11px;}
+  .proj{background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    box-shadow:var(--shadow); break-inside:avoid; display:flex; flex-direction:column;}
+  .proj-img{width:100%; height:96px; object-fit:cover; background:#eef2f0; display:block; border-bottom:1px solid var(--line);}
+  .proj-body{padding:10px 11px 11px; display:flex; flex-direction:column; flex:1;}
+  .proj-name{font-size:12.5px; font-weight:800; color:var(--ink);}
+  .proj-kind{font-size:9.5px; font-weight:600; color:var(--accent); margin-top:2px;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:4px; margin-top:6px;}
+  .tag{font-size:8.5px; font-weight:600; color:var(--emerald-dark); background:var(--emerald-soft);
+    border:1px solid var(--emerald-line); border-radius:5px; padding:2px 6px;}
+  .proj-desc{font-size:10px; color:var(--ink-soft); line-height:1.48; margin-top:7px; flex:1;}
+  .proj .btn-row{margin-top:9px; gap:5px;}
+  .proj .lbtn{padding:4px 8px; font-size:9.3px;}
+  .proj .lbtn img{height:12px;}
+
+  .footnote{grid-column:1 / -1; display:flex; align-items:center; flex-wrap:wrap; gap:9px;
+    font-size:10.5px; color:var(--ink-soft); background:var(--emerald-soft);
+    border:1px dashed var(--emerald-line); border-radius:9px; padding:9px 12px;}
+  .footnote .btn-row{margin-top:0;}
+
+  .str-wrap{display:flex; flex-wrap:wrap; gap:6px;}
+  .str{font-size:10px; font-weight:600; color:var(--emerald-dark); background:var(--emerald-soft);
+    border:1px solid var(--emerald-line); border-radius:6px; padding:4px 9px;}
+  .kp{margin:9px 0 0; padding:0; display:flex; flex-direction:column; gap:5px;}
+  .kp li{position:relative; padding-left:18px; font-size:11px; color:var(--ink-soft); list-style:none; line-height:1.45;}
+  .kp li::before{content:"✓"; position:absolute; left:2px; top:0; color:var(--emerald); font-weight:800; font-size:11px;}
+  .cols2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .mini-h{font-size:10.5px; font-weight:700; color:var(--ink); margin-bottom:7px; text-transform:uppercase; letter-spacing:.04em;}
+
+  @page{size:A4; margin:0;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0; box-shadow:none; width:auto; min-height:auto;}
+    .card,.proj{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="side" id="side"></aside>
+  <main class="main" id="main"></main>
+</div>
+
+<script>
+const DATA = {
+  name: "Muhammet Mustafa Özeski",
+  title: "C# Expert · Software Engineer",
+  subtitle: ".NET · MAUI · Blazor · Unity · Cross-Platform Mobile, Web, Desktop & Games",
+  photo: "resimler/IMG-20220614-002612-3-650adaab7e70b.webp", // gerçek fotoğraf; boş bırakılırsa initials kullanılır
+  initials: "MÖ",
+  born: "03 November 1999",
+  location: "Türkiye",
+  availability: "Open to relocation (any city or country) · Available immediately",
+  clickIcon: "resimler/image%20(6).webp", // "tıklanabilir" imleci; her buton GRUBUNDA yalnız 1 butonun sağ-alt köşesine
+
+  summary: "C# expert and software engineer building production software since 2019, end to end across mobile, web, desktop and games. I architect systems — not just write features — and ship them to real users: I solo-architected and released a commercial cross-platform .NET MAUI Blazor Hybrid app to both the App Store and Google Play, and was lead developer on a commercial Unity game published on Steam. Strong across the whole C#/.NET stack (MAUI, Blazor, Windows desktop) and Unity, with a real track record in architecture, performance, concurrency, monetization, security/cryptography, and clean, thoroughly documented code.",
+
+  contact: [
+    { label: "Email",          value: "muhammetozeski@gmail.com",            href: "mailto:muhammetozeski@gmail.com",            badge: "" },
+    // { label: "Phone",          value: "+90 551 503 48 77",                   href: "tel:+905515034877",                          badge: "" },
+    { label: "GitHub",         value: "github.com/muhammetozeski",           href: "https://github.com/muhammetozeski",          badge: "badges/github-icon.svg" },
+    { label: "LinkedIn",       value: "linkedin.com/in/mmö",                 href: "https://www.linkedin.com/in/mm%C3%B6",        badge: "badges/linkedin-icon.svg" },
+    { label: "Stack Overflow", value: "stackoverflow.com/users/14619963/mizi", href: "https://stackoverflow.com/users/14619963/mizi", badge: "badges/stackoverflow-icon.svg" },
+    { label: "itch.io",        value: "fivza.itch.io",                       href: "https://fivza.itch.io",                      badge: "badges/itchio-icon.svg" }
+  ],
+
+  experience: [
+    {
+      featured: true,
+      name: "CulturEnglish — Cross-Platform Mobile App",
+      role: "Solo Software Architect & Developer · .NET 10 · MAUI Blazor Hybrid",
+      dates: "April 2026 – Present",
+      note: "started 23 April 2026",
+      shots: [
+        "resimler/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202026-06-19%20205746.png",
+        "resimler/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202026-06-19%20210145.png"
+      ],
+      storeBadges: [
+        { label: "App Store",    href: "https://apps.apple.com/us/app/culturenglish/id6760410539",                 badge: "badges/appstore-get-it-badge.svg" },
+        { label: "Google Play",  href: "https://play.google.com/store/apps/details?id=com.culturel.english",        badge: "badges/googleplay-get-it-on-badge.svg" }
+      ],
+      oneLine: "A commercial language-learning app I solo-architected and shipped to both stores (v4.0.0) — ~19.6K lines across 217 source files, re-engineered from an existing Flutter app onto an architecture of my own design.",
+      bullets: [
+        "Solo-architected and shipped a commercial cross-platform app to the App Store and Google Play; designed the structure of all 217 source files and every screen myself.",
+        "Designed a custom inheritance-based Blazor page architecture (after rejecting MVVM as a poor fit for MAUI Blazor Hybrid) and solved the non-obvious dual-instance lifecycle bugs the framework does not guard against.",
+        "Built idempotent, crash-recoverable In-App Purchases over Google Play Billing v8 and Apple StoreKit — and caught and fixed a real money-losing concurrency race in the wallet with a single serialization lock.",
+        "Engineered a unified cross-platform native event hub over the Android and iOS lifecycles; verified the full iOS build on Windows by reading MAUI's package metadata via reflection.",
+        "Built an offline-first cloud library on Firebase (Auth, Firestore, Cloud Storage, FCM) with two-tier caching, version-gated delta sync, and Polly-based resilient I/O with enforced timeouts.",
+        "Built a fully C#-driven design-token system, a custom on-device test harness with branch-specific root-cause diagnostics, and maintained design specs, a pre-release audit, and a 33-entry engineering journal."
+      ]
+    },
+    {
+      name: "The Simple Balance — Commercial Game",
+      role: "Lead Developer · Unity · C#",
+      dates: "September 2024 – July 2025",
+      platform: "Steam (Windows)",
+      image: "resimler/image%20(3).webp",
+      imageCaption: "A scene I designed",
+      links: [ { label: "View On", href: "https://store.steampowered.com/app/1719480/The_Simple_Balance/", type: "steam" } ],
+      bullets: [
+        "Hired by the project owner (Kai Niklas) as lead developer to take a ~65%-complete game to a published Steam release.",
+        "Built the remaining 5 levels, a random encounter system and other gameplay systems, designed and added new quests and stories, fixed bugs, and published the title on Steam in July 2025."
+      ]
+    }
+  ],
+
+  // Proje açıklamaları PDF'ten VERBATIM:
+  projects: [
+    {
+      name: "The Don't Fall", kind: "C# · Unity Game", tags: ["2D","Story","Platformer","Adventure"],
+      image: "resimler/image%20(5).webp",
+      desc: "Try not to fall and win. This is a 2d platformer that I've finished in 1 week. You can play it on my itch.io.",
+      links: [
+        { label: "Source Code",    href: "https://github.com/muhammetozeski/DontFall", type: "github" },
+        { label: "Try It",         href: "https://fivza.itch.io/dont-fall", type: "itch" },
+        { label: "Gameplay Video", href: "https://www.youtube.com/watch?v=VvuLzYJ51cI", type: "youtube" },
+        { label: "Screenshots",    href: "https://drive.google.com/file/d/16L6Oq6VBajk7ouXExs2nzdEvEAzQHZ8T/view", type: "drive" }
+      ]
+    },
+    {
+      name: "RPG Game", kind: "C# · Unity Game", tags: ["RPG","Adventure","Action"],
+      image: "resimler/2023-01-15%2006.09.16.webp",
+      desc: "This is my dream project. I've been developing this game since the beginning of 2023. You can see all my coding skills inside of it. Please examine the source codes. It will be an RPG adventure game just like skyrim.",
+      links: [
+        { label: "Gameplay Video",     href: "https://www.youtube.com/watch?v=A_ObTK2zv24", type: "youtube" },
+        { label: "Intro Video",        href: "https://www.youtube.com/watch?v=gXWMgHb09Lg", type: "youtube" },
+        { label: "High Res. Pictures", href: "https://muhammetozeski.github.io/RPG-Project-Pictures", type: "web" },
+        { label: "Low Res. Pictures",  href: "https://drive.google.com/file/d/1cD-spkmgp840SBjB2u0D16uVsXgXhTBF/view?usp=sharing", type: "drive" },
+        { label: "Source Code",        href: "https://drive.google.com/drive/folders/1-9ArNcaYuoZRjzIHNfbGg7ewgAhwD-bq?usp=sharing", type: "drive" }
+      ]
+    },
+    {
+      name: "TPMPass", kind: "C# · Password Manager", tags: ["Cryptography","Memory Protection","DPAPI - TPM"],
+      image: "resimler/image.webp",
+      desc: "TPMPass is a secure, passwordless password manager for Windows. It leverages the Windows Data Protection API (DPAPI) to ensure that your identity is the only key needed to access your data. In this project I learned and experienced many things about data protection and cryptography.",
+      links: [ { label: "Source Code", href: "https://github.com/muhammetozeski/TPMPass", type: "github" } ]
+    },
+    {
+      name: "Space Traveler", kind: "C# · Unity Game", tags: ["RPG","Action","Adventure"],
+      image: "resimler/Space%20Traveller.mp4_20230922_080854.835.webp",
+      desc: "This is a simple game that you will drive your space ship in a straight road, shoot obstacles, rest in stations, meet new people, get new missions. It has a good fly mechanics. Please take a look at the input system that i created for this game. (in development)",
+      links: [
+        { label: "Gameplay Video", href: "https://www.youtube.com/watch?v=6jBO-OzlgoQ", type: "youtube" },
+        { label: "Screenshots",    href: "https://drive.google.com/file/d/1G82ogkChDa-tmfO0NXDka8WS1vIAxrTs/view?usp=sharing", type: "drive" },
+        { label: "Source Code",    href: "https://github.com/muhammetozeski/Space-Traveler", type: "github" }
+      ]
+    },
+    {
+      name: "Bird Simulator", kind: "C# · Unity Game", tags: ["Simulation","360° Fly mechanics"],
+      image: "resimler/Bird%20simulator.mp4_20230922_084026.617.webp",
+      desc: "This project will be a simulation game. I created this game by taking flying mechanics from the space traveller game project and adapted it to a bird flying mechanics. (in development)",
+      links: [
+        { label: "Gameplay Video", href: "https://www.youtube.com/watch?v=nnjxCj8EjHY", type: "youtube" },
+        { label: "Screenshots",    href: "https://drive.google.com/file/d/1eSXxWdK-TCBpWcolGCXtUbPw1bTGU7UO/view?usp=sharing", type: "drive" },
+        { label: "Source Code",    href: "https://github.com/muhammetozeski/BirdSimulator", type: "github" }
+      ]
+    },
+    {
+      name: "Mirror Game 2", kind: "C# · Unity Game", tags: ["3d puzzle","Horror","2023"],
+      image: "resimler/mirror%20game%202.mp4_20230926_030949.153.webp",
+      desc: "An FPS 3d puzzle game. I tried create an fps game with laser mechanics. I've learned many things about making good visual effects, creating explosives and using Particle System events in Unity.",
+      links: [
+        { label: "Gameplay Video", href: "https://youtu.be/GEFELVjXWhw", type: "youtube" },
+        { label: "Screenshots",    href: "https://drive.google.com/file/d/16tiNPvONxCJjI_6vgnlBzZKop5A4gJim/view?usp=sharing", type: "drive" },
+        { label: "Source Code",    href: "https://github.com/muhammetozeski/Mirror-Game-2", type: "github" }
+      ]
+    },
+    {
+      name: "3D Wallpaper", kind: "Unity", tags: ["3D wallpaper","Good scene design","Scene lighting"],
+      image: "resimler/jx6aZH.webp",
+      desc: "In this project you can see my scene design skills. This is a simple 3D solar system wallpaper made with Unity3d.",
+      links: [
+        { label: "Source Code",    href: "https://github.com/muhammetozeski/Solar-System-Wallpaper", type: "github" },
+        { label: "Try It",         href: "https://fivza.itch.io/solar-system-3d-wallpaper", type: "itch" },
+        { label: "Gameplay Video", href: "https://www.youtube.com/watch?v=KRLg5HCqgog", type: "youtube" },
+        { label: "Screenshots",    href: "https://drive.google.com/drive/folders/19GTnSCJh3PgyJwfPCEPfQ0kfKe-ktFg1?usp=sharing", type: "drive" }
+      ]
+    },
+    {
+      name: "Alpha Channel Changer", kind: "C# · Dev Tool", tags: ["Tooling","Textures"],
+      image: "resimler/image%20(1).webp",
+      desc: "I created this development tool for merging alpha channels on textures in my game projects. I love creating useful small tools for development. I also have bunch of small tools that I didn't uploaded to github yet.",
+      links: [
+        { label: "Source Code",   href: "https://github.com/muhammetozeski/AlphaChannelChanger", type: "github" },
+        { label: "Download Page", href: "https://github.com/muhammetozeski/AlphaChannelChanger/releases", type: "github" }
+      ]
+    }
+  ],
+
+  projectsFootnote: { text: "22+ repositories on GitHub and 2 more playable games on itch.io.", links: [
+    { label: "GitHub", href: "https://github.com/muhammetozeski", type: "github" },
+    { label: "itch.io", href: "https://fivza.itch.io", type: "itch" }
+  ]},
+
+  // skill öğelerinde href varsa TIKLANABİLİR (GitHub kanıtı); yoksa düz metin
+  skills: [
+    { group: "Languages & Core", items: [
+      {label:"C# (expert, since 2019)"},{label:".NET 10 / .NET"},{label:"C# 14"},{label:"OOP · OOD · SOLID"},{label:"DRY"},
+      {label:"Async & multithreading"},{label:"GC optimization"},{label:"Design patterns (Observer, Singleton, event-driven, CRTP)"},{label:"Immutable / record-based design"} ] },
+    { group: "Mobile", items: [
+      {label:".NET MAUI"},{label:"MAUI Blazor Hybrid"},{label:"Android & iOS"},{label:"Native lifecycle interop"},{label:"In-App Purchases (Billing v8, StoreKit)"},{label:"Push notifications (FCM)"} ] },
+    { group: "Web", items: [ {label:"Blazor"},{label:"HTML"},{label:"CSS"},{label:"Component & design-system architecture"} ] },
+    { group: "Desktop", items: [
+      {label:"Windows .NET apps"},
+      {label:"Win32 / DPAPI / CNG", href:"https://github.com/muhammetozeski/TPMPass/blob/main/CryptoService.cs"},
+      {label:"Developer tooling"} ] },
+    { group: "Game Development", items: [
+      {label:"Unity"},{label:"C# gameplay systems"},
+      {label:"Object pooling", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/ObjectPoolingSystem.cs"},
+      {label:"Custom input system", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/Input%20System/PlayingInputController.cs"},
+      {label:"Drop-in save system", href:"https://github.com/muhammetozeski/TPMPass/blob/main/SettingsManager.cs"},
+      {label:"3D flight mechanics", href:"https://github.com/muhammetozeski/BirdSimulator"},
+      {label:"Level & scene design"},{label:"Steam release"} ] },
+    { group: "Cloud & Backend", items: [ {label:"Firebase (Auth, Firestore, Storage, FCM)"},{label:"Offline-first sync"},{label:"Polly resilience"} ] },
+    { group: "Security & Cryptography", items: [
+      {label:"Windows DPAPI", href:"https://github.com/muhammetozeski/TPMPass/blob/main/CryptoService.cs"},
+      {label:"CNG", href:"https://github.com/muhammetozeski/TPMPass/blob/main/CryptoService.cs"},
+      {label:"AES", href:"https://github.com/muhammetozeski/TPMPass"},
+      {label:"SHA-based KDFs", href:"https://github.com/muhammetozeski/TPMPass"},
+      {label:"Secure memory management", href:"https://github.com/muhammetozeski/TPMPass/blob/main/KeyManager.cs"} ] },
+    { group: "Tooling & Practice", items: [
+      {label:"Git"},{label:"Visual Studio"},{label:"MSBuild multi-targeting"},{label:"Source generators"},{label:"System.Text.Json custom converters"},{label:"Unit & integration testing"},{label:"Technical documentation"},{label:"Build & release engineering"} ] }
+  ],
+
+  // "Systems I've designed" — href olan TIKLANABİLİR, GitHub kanıtına gider
+  systems: [
+    {label:"Object pooling system", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/ObjectPoolingSystem.cs"},
+    {label:"Custom input system", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/Input%20System/PlayingInputController.cs"},
+    {label:"Centralized, configurable settings system", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/Settings/SettingsMaster.cs"},
+    {label:"3D flight system", href:"https://github.com/muhammetozeski/BirdSimulator"},
+    {label:"Drop-in save system", href:"https://github.com/muhammetozeski/TPMPass/blob/main/SettingsManager.cs"},
+    {label:"NPC random movement system"},
+    {label:"Observer event system"}
+  ],
+
+  keyPoints: [
+    "I can start right away, I need job urgently.",
+    "I am okay to relocate to any city or country.",
+    "I learn quickly and adopt almost every situation.",
+    "I remain \"solution oriented\" in challenging situations.",
+    "I stay focused and productive under pressure.",
+    "I can adapt to flexible working hours.",
+    "I have experience about publishing in Steam."
+  ],
+
+  strengths: ["System architecture","Advanced C#/.NET","Concurrency & performance","Cross-platform mobile","Monetization / IAP","Cloud & resilience","UI & design systems","Testing & diagnostics","Root-cause debugging"],
+
+  education: { degree:"B.Sc. — Computer Technology & Information Systems", faculty:"Faculty of Science", school:"Bartın University, Türkiye", dates:"2019 – 2024", gpa:"GPA 3.2 / 4.0" },
+
+  languages: [ {name:"English", level:"Fluent"}, {name:"Turkish", level:"Native"} ]
+};
+
+// type -> badge dosyası eşlemesi (link butonlarında):
+const BADGE_BY_TYPE = {
+  github:    "badges/github-icon.svg",
+  itch:      "badges/itchio-icon.svg",
+  youtube:   "badges/youtube-icon.svg",
+  drive:     "badges/googledrive-icon.svg",
+  steam:     "badges/steam-wordmark.svg",
+  appstore:  "badges/appstore-get-it-badge.svg",
+  googleplay:"badges/googleplay-get-it-on-badge.svg",
+  web:       "badges/github-icon.svg"
+};
+
+/* ---------- render helpers ---------- */
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* ---------- click (tiklama) ikonlari ----------
+   Boyut: :root --clickicon-size (TEK degisken, hepsi icin gecerli).
+   Konum:
+     - HEPSINI birden kaydirmak icin: :root --clickicon-offset-x / --clickicon-offset-y
+     - SADECE bir ikonu kaydirmak icin: asagidaki ilgili anahtarin x/y'si (normalde 0,0). */
+const CLICK_OFFSETS = {
+  contact:       { x:0, y:0 },   // sidebar - iletisim
+  stores:        { x:0, y:0 },   // CulturEnglish - magaza rozetleri
+  simpleBalance: { x:0, y:0 },   // The Simple Balance - View on Steam
+  footnote:      { x:0, y:0 },   // projeler dipnotu
+  skills:        { x:0, y:0 },   // sidebar - yetenekler
+  systems:       { x:0, y:0 },   // sidebar - sistemler
+  "proj-0":{x:0,y:0}, "proj-1":{x:0,y:0}, "proj-2":{x:0,y:0}, "proj-3":{x:0,y:0},
+  "proj-4":{x:0,y:0}, "proj-5":{x:0,y:0}, "proj-6":{x:0,y:0}, "proj-7":{x:0,y:0}
+};
+function clickIcon(key){
+  const o = CLICK_OFFSETS[key] || { x:0, y:0 };
+  return `<img class="clickicon" style="--clickicon-dx:${o.x}px; --clickicon-dy:${o.y}px" src="${DATA.clickIcon}" alt="">`;
+}
+
+function linkBtn(l, isLast, key){
+  const badge = BADGE_BY_TYPE[l.type] || BADGE_BY_TYPE.web;
+  const isSteam = l.type === "steam";
+  const steam = isSteam ? " steam" : "";
+  // Steam'de: "View On [STEAM svg]" — once yazi, sonra steam logosu.
+  const inner = isSteam
+    ? `<span>${esc(l.label)}</span><img src="${badge}" alt="Steam">`
+    : `<img src="${badge}" alt=""><span>${esc(l.label)}</span>`;
+  return `<a class="lbtn${steam}" href="${l.href}" target="_blank" rel="noopener">`
+    + inner + (isLast ? clickIcon(key) : "") + `</a>`;
+}
+
+function render(){
+  const d = DATA;
+
+  /* ===== SIDEBAR ===== */
+  const photo = d.photo
+    ? `<img class="photo" src="${d.photo}" alt="${esc(d.name)}">`
+    : `<div class="photo-fallback">${esc(d.initials)}</div>`;
+
+  const contact = d.contact.map((c,i)=>{
+    const last = i === d.contact.length-1;
+    const ic = c.badge ? `<img src="${c.badge}" alt="">` : `<span class="dot"></span>`;
+    return `<a class="sbtn" href="${c.href}" target="_blank" rel="noopener">${ic}`
+      + `<span class="tx"><b>${esc(c.label)}</b><span>${esc(c.value)}</span></span>`
+      + (last ? clickIcon('contact') : "") + `</a>`;
+  }).join("");
+
+  /* sidebar skills (chips). Track last clickable for click icon */
+  const skillGroups = d.skills.map(g=>{
+    const items = g.items.map(it=>{
+      if(it.href){
+        return `<a class="schip link" href="${it.href}" target="_blank" rel="noopener"><img src="${BADGE_BY_TYPE.github}" alt="">${esc(it.label)}</a>`;
+      }
+      return `<span class="schip">${esc(it.label)}</span>`;
+    }).join("");
+    return `<div class="sgroup"><h4>${esc(g.group)}</h4><div class="schips">${items}</div></div>`;
+  }).join("");
+
+  const sysItems = d.systems.map(s=>{
+    if(s.href){
+      return `<a class="it" href="${s.href}" target="_blank" rel="noopener"><span>${esc(s.label)}</span><img src="${BADGE_BY_TYPE.github}" alt=""></a>`;
+    }
+    return `<div class="it">${esc(s.label)}</div>`;
+  }).join("");
+
+  const e = d.education;
+  const eduHtml = `
+    <div class="side-edu">
+      <div class="deg">${esc(e.degree)}</div>
+      <div class="ln">${esc(e.faculty)} · ${esc(e.school)}</div>
+      <div class="mt"><span>${esc(e.dates)}</span><span>${esc(e.gpa)}</span></div>
+    </div>
+    <div class="side-lang">${d.languages.map(l=>`<div class="l"><b>${esc(l.name)}</b><span>${esc(l.level)}</span></div>`).join("")}</div>`;
+
+  const sideStr = d.strengths.map(s=>`<span class="schip">${esc(s)}</span>`).join("");
+  const sideKp = d.keyPoints.map(k=>`<li>${esc(k)}</li>`).join("");
+
+  document.getElementById("side").innerHTML = `
+    ${photo}
+    <div class="side-name">${esc(d.name)}</div>
+    <div class="side-title">${esc(d.title)}</div>
+    <div class="side-sub">${esc(d.subtitle)}</div>
+
+    <h3>Contact</h3>
+    <div class="scontact">${contact}</div>
+
+    <h3>Skills</h3>
+    ${skillGroups}
+
+    <h3>Systems I've designed</h3>
+    <div class="ssys">${sysItems}</div>
+
+    <h3>Core strengths</h3>
+    <div class="schips">${sideStr}</div>
+
+    <h3>Key points</h3>
+    <ul class="side-kp">${sideKp}</ul>
+
+    <h3>Education &amp; Languages</h3>
+    ${eduHtml}
+  `;
+
+  /* ===== MAIN ===== */
+  const feat = d.experience.find(e=>e.featured);
+  const stores = feat.storeBadges.map((s,i)=>{
+    const last = i === feat.storeBadges.length-1;
+    return `<a class="store-badge" href="${s.href}" target="_blank" rel="noopener">`
+      + `<img src="${s.badge}" alt="${esc(s.label)}">` + (last ? clickIcon('stores') : "") + `</a>`;
+  }).join("");
+  const featShots = (feat.shots||[]).map(s=>`<img src="${s}" alt="${esc(feat.name)}">`).join("");
+  const featHtml = `
+    <div class="card feat">
+      <div class="exp-top">
+        <div>
+          <span class="feat-badge">Featured · Shipped to both stores</span>
+          <div class="exp-name">${esc(feat.name)}</div>
+          <div class="exp-role">${esc(feat.role)}</div>
+        </div>
+        <div><div class="exp-dates">${esc(feat.dates)}</div><div class="exp-note">${esc(feat.note)}</div></div>
+      </div>
+      ${featShots ? `<div class="exp-shots">${featShots}</div>` : ""}
+      <div class="exp-oneline">${esc(feat.oneLine)}</div>
+      <div class="btn-row">${stores}</div>
+      <ul class="bullets">${feat.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+    </div>`;
+
+  const sb = d.experience.find(e=>!e.featured);
+  const sbLinks = sb.links.map((l,i)=>linkBtn(l, i===sb.links.length-1, 'simpleBalance')).join("");
+  const sbFig = sb.image
+    ? `<figure class="exp-figure"><img src="${sb.image}" alt="${esc(sb.name)}">`
+      + (sb.imageCaption ? `<figcaption>${esc(sb.imageCaption)}</figcaption>` : "")
+      + `</figure>`
+    : "";
+  const sbHtml = `
+    <div class="card">
+      <div class="exp-top">
+        <div>
+          <div class="exp-name">${esc(sb.name)}</div>
+          <div class="exp-role">${esc(sb.role)} · ${esc(sb.platform)}</div>
+        </div>
+        <div class="exp-dates">${esc(sb.dates)}</div>
+      </div>
+      ${sbFig}
+      <ul class="bullets">${sb.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+      <div class="btn-row">${sbLinks}</div>
+    </div>`;
+
+  const projs = d.projects.map((p,pi)=>{
+    const tags = p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+    const links = p.links.map((l,i)=>linkBtn(l, i===p.links.length-1, 'proj-'+pi)).join("");
+    return `
+      <div class="proj">
+        <img class="proj-img" src="${p.image}" alt="${esc(p.name)}">
+        <div class="proj-body">
+          <div class="proj-name">${esc(p.name)}</div>
+          <div class="proj-kind">${esc(p.kind)}</div>
+          <div class="proj-tags">${tags}</div>
+          <div class="proj-desc">${esc(p.desc)}</div>
+          <div class="btn-row">${links}</div>
+        </div>
+      </div>`;
+  }).join("");
+  const fn = d.projectsFootnote;
+  const fnLinks = fn.links.map((l,i)=>linkBtn(l, i===fn.links.length-1, 'footnote')).join("");
+  const footnote = `<div class="footnote"><span>${esc(fn.text)}</span><div class="btn-row">${fnLinks}</div></div>`;
+
+  document.getElementById("main").innerHTML = `
+    <section>
+      <div class="sec-head"><div class="num">1</div><h2>Profile</h2><div class="bar"></div></div>
+      <div class="summary">${esc(d.summary)}</div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="num">2</div><h2>Experience</h2><div class="bar"></div></div>
+      ${featHtml}
+      ${sbHtml}
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="num">3</div><h2>Personal Projects</h2><div class="bar"></div></div>
+      <div class="proj-grid">${projs}${footnote}</div>
+    </section>
+  `;
+
+  /* place ONE click icon on the last clickable skill chip and last clickable system */
+  const schipLinks = document.querySelectorAll(".schip.link");
+  if(schipLinks.length){ schipLinks[schipLinks.length-1].insertAdjacentHTML("beforeend", clickIcon('skills')); }
+  const ssysLinks = document.querySelectorAll(".ssys a.it");
+  if(ssysLinks.length){ ssysLinks[ssysLinks.length-1].insertAdjacentHTML("beforeend", clickIcon('systems')); }
+}
+render();
+</script>
+</body>
+</html>
