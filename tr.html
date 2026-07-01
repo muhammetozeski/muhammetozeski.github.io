@@ -693,10 +693,13 @@ function render(){
   `;
 
 
-  const langBtn = !PdfExport ? `<div style="display:flex; justify-content:flex-end; margin-bottom:-10px; position:relative; z-index:10;"><a href="index.html" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">English</a></div>` : "";
+  const topBtns = !PdfExport ? `<div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:-10px; position:relative; z-index:10;">
+<a href="tr.pdf" download="Muhammet Mustafa Özeski CV.pdf" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">PDF Olarak İndir</a>
+<a href="index.html" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">English</a>
+</div>` : "";
 
   document.getElementById("main").innerHTML = `
-    ${langBtn}
+    ${topBtns}
     <section>
       <div class="sec-head"><div class="num">1</div><h2>Profil</h2><div class="bar"></div></div>
       <div class="summary">${esc(d.summary)}</div>
