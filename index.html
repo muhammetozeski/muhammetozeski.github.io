@@ -366,7 +366,7 @@ const DATA = {
       ]
     },
     {
-      name: "Mirror Game 2", kind: "C# · Unity Game", tags: ["3d puzzle","Horror","2023"], dates: "Feb 2023 – Sep 2023",
+      clearLeft: true, name: "Mirror Game 2", kind: "C# · Unity Game", tags: ["3d puzzle","Horror","2023"], dates: "Feb 2023 – Sep 2023",
       image: "resimler/mirror%20game%202.mp4_20230926_030949.153.webp",
       desc: "An FPS 3d puzzle game. I tried create an fps game with laser mechanics. I've learned many things about making good visual effects, creating explosives and using Particle System events in Unity.",
       links: [
@@ -662,7 +662,7 @@ function render(){
     const tags = p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("");
     const links = p.links.map((l,i)=>linkBtn(l, i===p.links.length-1, 'proj-'+pi)).join("");
     const datesHtml = p.dates ? `<div style="font-size:9px; font-weight:700; color:var(--muted); text-align:right; white-space:nowrap;">${esc(p.dates)}</div>` : "";
-    return `<div class="proj">
+    return `${p.clearLeft ? '<div style="clear:left;"></div>' : ''}<div class="proj">
         ${Array.isArray(p.image) ? `<div class="proj-img-multi">${p.image.map(src=>`<img src="${src}" alt="">`).join("")}</div>` : `<img class="proj-img" src="${p.image}" alt="${esc(p.name)}">`}
         <div class="proj-body">
           <div style="display:flex; justify-content:space-between; align-items:flex-start;">
