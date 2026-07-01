@@ -239,7 +239,7 @@
 </div>
 
 <script>
-const SHOW_LANG_BTN = true; // Set to false to hide the language button for PDF
+const PdfExport = false; // Set to true to hide the language button and other elements for PDF
 
 const DATA = {
   name: "Muhammet Mustafa Özeski",
@@ -631,7 +631,7 @@ function render(){
   const fnLinks = fn.links.map((l,i)=>linkBtn(l, i===fn.links.length-1, 'footnote')).join("");
   const footnote = `<div class="footnote"><span>${esc(fn.text)}</span><div class="btn-row">${fnLinks}</div></div>`;
 
-  const langBtn = SHOW_LANG_BTN ? `<div style="display:flex; justify-content:flex-end; margin-bottom:-10px; position:relative; z-index:10;"><a href="tr.html" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">Türkçe</a></div>` : "";
+  const langBtn = !PdfExport ? `<div style="display:flex; justify-content:flex-end; margin-bottom:-10px; position:relative; z-index:10;"><a href="tr.html" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">Türkçe</a></div>` : "";
 
   document.getElementById("main").innerHTML = `
     ${langBtn}
