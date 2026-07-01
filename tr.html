@@ -199,8 +199,8 @@
   /* projects */
   .proj-grid{display:block; margin-top:11px;}
   .proj{background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden;
-    box-shadow:var(--shadow); break-inside:avoid; display:inline-flex; flex-direction:column;
-    width:236px; margin-right:11px; margin-bottom:11px; vertical-align:top;}
+    box-shadow:var(--shadow); break-inside:avoid; display:flex; flex-direction:column;
+    flex:1 1 230px; margin:0; vertical-align:top;}
   .proj-img{width:100%; height:96px; object-fit:cover; background:#eef2f0; display:block; border-bottom:1px solid var(--line);}
   .proj-img-multi{display:flex; width:100%; height:96px; background:#eef2f0; border-bottom:1px solid var(--line);}
   .proj-img-multi img{flex:1; min-width:0; object-fit:cover; border-right:1px solid var(--line);}
@@ -658,11 +658,12 @@ function render(){
     }
   }).join("");
 
-  const projs = d.projects.map((p,pi)=>{
+  const renderProjs = (arr, startIdx) => arr.map((p,i)=>{
+    const pi = startIdx + i;
     const tags = p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("");
-    const links = p.links.map((l,i)=>linkBtn(l, i===p.links.length-1, 'proj-'+pi)).join("");
+    const links = p.links.map((l,j)=>linkBtn(l, j===p.links.length-1, 'proj-'+pi)).join("");
     const datesHtml = p.dates ? `<div style="font-size:9px; font-weight:700; color:var(--muted); text-align:right; white-space:nowrap;">${esc(p.dates)}</div>` : "";
-    return `${p.clearLeft ? '<div style="clear:left;"></div>' : ''}<div class="proj">
+    return `<div class="proj">
         ${Array.isArray(p.image) ? `<div class="proj-img-multi">${p.image.map(src=>`<img src="${src}" alt="">`).join("")}</div>` : `<img class="proj-img" src="${p.image}" alt="${esc(p.name)}">`}
         <div class="proj-body">
           <div style="display:flex; justify-content:space-between; align-items:flex-start;">
@@ -676,6 +677,19 @@ function render(){
         </div>
       </div>`;
   }).join("");
+
+  const clearIdx = d.projects.findIndex(p => p.clearLeft);
+  const topArr = clearIdx >= 0 ? d.projects.slice(0, clearIdx) : d.projects;
+  const botArr = clearIdx >= 0 ? d.projects.slice(clearIdx) : [];
+
+  const projs = `
+    <div style="display:flex; flex-wrap:wrap; gap:11px; margin-bottom:11px;">
+      ${renderProjs(topArr, 0)}
+    </div>
+    ${botArr.length ? `<div style="display:flex; flex-wrap:wrap; gap:11px; clear:left;">
+      ${renderProjs(botArr, topArr.length)}
+    </div>` : ""}
+  `;
 
 
   const langBtn = !PdfExport ? `<div style="display:flex; justify-content:flex-end; margin-bottom:-10px; position:relative; z-index:10;"><a href="index.html" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">English</a></div>` : "";
