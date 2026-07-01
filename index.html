@@ -216,10 +216,8 @@
   .proj .lbtn{padding:4px 8px; font-size:9.3px;}
   .proj .lbtn img{height:12px;}
 
-  .footnote{grid-column:1 / -1; display:flex; align-items:center; flex-wrap:wrap; gap:9px;
-    font-size:10.5px; color:var(--ink-soft); background:var(--emerald-soft);
-    border:1px dashed var(--emerald-line); border-radius:9px; padding:9px 12px;}
-  .footnote .btn-row{margin-top:0;}
+  .footnote{margin-top:20px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); display:flex; flex-direction:column; gap:10px; font-size:11px; text-align:center;}
+  .footnote .btn-row{justify-content:center;}
 
   .str-wrap{display:flex; flex-wrap:wrap; gap:6px;}
   .str{font-size:10px; font-weight:600; color:var(--emerald-dark); background:var(--emerald-soft);
@@ -425,7 +423,7 @@ const DATA = {
     }
   ],
 
-  projectsFootnote: { text: "22+ repositories on GitHub and 2 more playable games on itch.io.", links: [
+  projectsFootnote: { text: "33+ repositories on GitHub and 2 more playable games on itch.io.", links: [
     { label: "GitHub", href: "https://github.com/muhammetozeski", type: "github" },
     { label: "itch.io", href: "https://fivza.itch.io", type: "itch" }
   ]},
@@ -581,6 +579,10 @@ function render(){
   const sideStr = d.strengths.map(s=>`<span class="schip">${esc(s)}</span>`).join("");
   const sideKp = d.keyPoints.map(k=>`<li>${esc(k)}</li>`).join("");
 
+  const fn = d.projectsFootnote;
+  const fnLinks = fn.links.map((l,i)=>linkBtn(l, i===fn.links.length-1, 'footnote')).join("");
+  const footnote = `<div class="footnote"><span>${esc(fn.text)}</span><div class="btn-row">${fnLinks}</div></div>`;
+
   document.getElementById("side").innerHTML = `
     ${photo}
     <div class="side-name">${esc(d.name)}</div>
@@ -604,6 +606,7 @@ function render(){
 
     <h3>Education &amp; Languages</h3>
     ${eduHtml}
+    ${footnote}
   `;
 
   /* ===== MAIN ===== */
@@ -673,9 +676,7 @@ function render(){
         </div>
       </div>`;
   }).join("");
-  const fn = d.projectsFootnote;
-  const fnLinks = fn.links.map((l,i)=>linkBtn(l, i===fn.links.length-1, 'footnote')).join("");
-  const footnote = `<div class="footnote"><span>${esc(fn.text)}</span><div class="btn-row">${fnLinks}</div></div>`;
+
 
   const langBtn = !PdfExport ? `<div style="display:flex; justify-content:flex-end; margin-bottom:-10px; position:relative; z-index:10;"><a href="tr.html" style="font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:#fff; text-decoration:none;">Türkçe</a></div>` : "";
 
@@ -693,7 +694,7 @@ function render(){
 
     <section>
       <div class="sec-head"><div class="num">3</div><h2>Personal Projects</h2><div class="bar"></div></div>
-      <div class="proj-grid">${projs}${footnote}</div>
+      <div class="proj-grid">${projs}</div>
     </section>
   `;
 
