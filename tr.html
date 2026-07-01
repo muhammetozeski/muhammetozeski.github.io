@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Muhammet Mustafa Özeski — CV</title>
+<title>Muhammet Mustafa Özeski - CV</title>
 <!--
   ============================================================================
   DÜZENLEME REHBERİ (Editing guide)
@@ -168,7 +168,7 @@
   .lbtn.steam img{height:15px;}
 
   /* width/height !important: kapsayici buton img kurallari (.sbtn img, .store-badge img,
-     .lbtn img ...) ezmesin diye — boylece TUM click ikonlari tek --clickicon-size'dan gelir.
+     .lbtn img ...) ezmesin diye - boylece TUM click ikonlari tek --clickicon-size'dan gelir.
      Konum: global --clickicon-offset-x/y (hepsini birden kaydirir) + her ikonun kendi
      --clickicon-dx/dy degeri (sadece o ikonu kaydirir, normalde 0). */
   .clickicon{position:absolute; right:0; bottom:0;
@@ -178,7 +178,7 @@
       calc(7px + var(--clickicon-offset-y) + var(--clickicon-dy,0px)));
     filter:drop-shadow(0 1px 2px rgba(0,0,0,.3)); pointer-events:none;}
 
-  /* experience media — gorseller kart icinde ana yazinin ustunde */
+  /* experience media - gorseller kart icinde ana yazinin ustunde */
   .exp-shots{display:flex; justify-content:center; align-items:flex-start; gap:26px;
     flex-wrap:wrap; margin:11px 0 4px;}
   .exp-shots img{height:228px; width:auto; border-radius:14px; background:#fff;
@@ -267,8 +267,8 @@ const DATA = {
     {
       featured: true,
       featuredText: "Öne Çıkan · Her iki mağazada yayında",
-      name: "CulturEnglish — Çok Platformlu Mobil Uygulama",
-      role: "Tek Başına Yazılım Mimarı ve Geliştirici · .NET 10 · MAUI Blazor Hybrid",
+      name: "CulturEnglish - Çok Platformlu Mobil Uygulama",
+      role: "Yazılım Mimarı ve Geliştirici · .NET 10 · MAUI Blazor Hybrid",
       dates: "Nisan 2026 – Haziran 2026",
       note: "23 Nis 2026 - 23 Haz 2026",
       shots: [
@@ -279,7 +279,7 @@ const DATA = {
         { label: "App Store",    href: "https://apps.apple.com/us/app/culturenglish/id6760410539",                 badge: "badges/appstore-get-it-badge.svg" },
         { label: "Google Play",  href: "https://play.google.com/store/apps/details?id=com.culturel.english",        badge: "badges/googleplay-get-it-on-badge.svg" }
       ],
-      oneLine: "Tek başıma tasarlayıp her iki mağazaya da yayınladığım ticari bir dil öğrenme uygulaması (v4.0.0) — 217 kaynak dosyada ~19,6 bin satır; mevcut bir Flutter uygulamasından, kendi tasarladığım bir mimari üzerine yeniden inşa edildi.",
+      oneLine: "Tek başıma tasarlayıp her iki mağazaya da yayınladığım ticari bir dil öğrenme uygulaması (v4.0.0) - 217 kaynak dosyada ~19,6 bin satır; mevcut bir Flutter uygulamasından, kendi tasarladığım bir mimari üzerine yeniden inşa edildi.",
       bullets: [
         "Ticari, çok platformlu bir uygulamayı tek başıma tasarlayıp App Store ve Google Play'de yayınladım; 217 kaynak dosyanın tamamının yapısını ve her ekranı kendim tasarladım.",
         "MVVM'i MAUI Blazor Hybrid için uygun bulmayıp eledikten sonra, kalıtım tabanlı özel bir Blazor sayfa mimarisi tasarladım ve framework'ün önlem almadığı, kolay fark edilmeyen çift örnekli yaşam döngüsü hatalarını çözdüm.",
@@ -291,26 +291,26 @@ const DATA = {
     },
     {
       featured: true,
-      featuredText: "Kurumsal Mimari · Yapay Zeka Destekli Ölçek",
-      name: "VirusTotal Scanner — Kurumsal Güvenlik Paketi",
+      featuredText: "Güvenlik Mimarisi · Yapay Zeka Destekli Ölçek",
+      name: "VirusTotal Scanner - Güvenlik Aracı",
       role: "Kıdemli Yazılım Mimarı ve Geliştirici · C# · WinForms",
-      dates: "Oca 2024 – Günümüz",
+      dates: "Haz 2026",
       shots: [ "resimler/VirusTotalProject.png" ],
       links: [
         { label: "Kaynak Kod", href: "https://github.com/MuhammetOzeski/VirusTotalScanner", type: "github" }
       ],
       oneLine: "60'tan fazla temel C# servisi içeren 20.000+ satırlık devasa bir masaüstü güvenlik aracı. Sistemi tek başıma tasarlayıp 120'den fazla teknik tasarım belgesi yazdım; mimari kontrolü tamamen elimde tutarak üretim hızımı yapay zeka ile katlanarak artırdım.",
       bullets: [
-        "Son derece disiplinli, belge odaklı bir geliştirme döngüsü (document-driven development) ile 20.000+ satırlık devasa bir kod tabanını baştan sona tasarladım.",
-        "Sıkı eşzamanlılık ve bellek kurallarını belirleyen 120'den fazla kapsamlı mimari tasarım belgesi (RFC) yazdıktan sonra Claude Code'u yalnızca kodlama motoru olarak kullandım.",
-        "Derin klasör taramalarında (recursive sweep) çöp toplayıcı (GC) takılmalarını tamamen ortadan kaldırmak için 1 MB'lık hash tamponlarında ArrayPool kullanarak agresif bellek optimizasyonu yaptım.",
-        "Bilinmeyen süreçleri (process) tam çalıştırıldıkları anda yakalayıp taramak için WMI (Win32_ProcessStartTrace) kullanarak derin işletim sistemi entegrasyonları kurdum.",
-        "Görünmez reCAPTCHA'ları aşmak için başsız (headless) bir Chromium WebView2 bileşeniyle sıfır kota yedeği geliştirdim ve ağ isteklerinden JSON verilerini başarıyla çıkardım.",
-        "Büyük veri kümelerinde dahi arayüzün 60 FPS kalması için AtomicFile ile dayanıklı yerel kayıt mekanizmaları ve filtrelenmiş BindingList olay zincirleri tasarladım."
+        "Son derece disiplinli, belge odaklı bir geliştirme döngüsü ile <b>20.000+ satırlık devasa bir kod tabanını</b> baştan sona tasarladım.",
+        "Sıkı eşzamanlılık ve bellek kurallarını belirleyen <b>120'den fazla kapsamlı mimari tasarım belgesi (RFC)</b> yazdıktan sonra yapay zekayı yalnızca kodlama motoru olarak kullandım.",
+        "Derin klasör taramalarında çöp toplayıcı (GC) takılmalarını tamamen ortadan kaldırmak için 1 MB'lık hash tamponlarında <b>ArrayPool kullanarak agresif bellek optimizasyonu</b> yaptım.",
+        "Bilinmeyen süreçleri tam çalıştırıldıkları anda yakalayıp taramak için <b>WMI (Win32_ProcessStartTrace)</b> kullanarak derin işletim sistemi entegrasyonları kurdum.",
+        "Görünmez reCAPTCHA'ları aşmak için <b>başsız (headless) bir Chromium WebView2</b> bileşeniyle sıfır kota yedeği geliştirdim ve ağ isteklerinden JSON verilerini başarıyla çıkardım.",
+        "Büyük veri kümelerinde dahi arayüzün <b>60 FPS kalması için</b> AtomicFile ile dayanıklı yerel kayıt mekanizmaları ve filtrelenmiş BindingList olay zincirleri tasarladım."
       ]
     },
     {
-      name: "The Simple Balance — Ticari Oyun",
+      name: "The Simple Balance - Ticari Oyun",
       role: "Baş Geliştirici · Unity · C#",
       dates: "Eylül 2024 – Temmuz 2025",
       platform: "Steam (Windows)",
@@ -321,47 +321,27 @@ const DATA = {
         "Proje sahibi (Kai Niklas) tarafından ~%65'i tamamlanmış bir oyunu yayınlanmış bir Steam sürümüne dönüştürmesi için baş geliştirici olarak işe alındım.",
         "Kalan 5 bölümü, rastgele karşılaşma (random encounter) sistemini ve diğer oynanış sistemlerini oluşturdum, yeni görevler ve hikâyeler tasarlayıp ekledim, hataları düzelttim ve oyunu Temmuz 2025'te Steam'de yayınladım."
       ]
-    },
-    {
-      name: "YoutubePlaylistSynchroniszer — Masaüstü Medya Senkronizasyonu",
-      role: "Tek Başına Geliştirici · C# · WinForms",
-      dates: "Haz 2026 – Günümüz",
-      platform: "Windows",
-      links: [
-        { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/YoutubePlaylistSynchroniszer", type: "github" }
-      ],
-      bullets: [
-        "Yerel klasörleri YouTube oynatma listeleriyle (gizli/liste dışı dahil) senkronize tutan, Google OAuth PKCE döngüsü (loopback) akışına sahip sağlam bir masaüstü uygulaması geliştirdim.",
-        "Arka planda başsız (headless) çalışabilen, UI yükü olmadan doğrudan sistem başlangıcında görev çubuğu entegrasyonuyla çalışmak üzere tasarlanmış bir mod mühendisliği yaptım.",
-        "Geçici ağ hatalarını ve API kotalarını Polly ile üstel geri çekilme (exponential backoff) stratejisi kullanarak aşan son derece dayanıklı bir görev ardışık düzeni (pipeline) uyguladım.",
-        "WinForms'da mutlak koordinatlar kullanmadan her türlü DPI değerine doğal olarak ölçeklenebilen, sekmeli ve çözünürlükten bağımsız bir GUI yapısı tasarladım.",
-        "DPAPI kullanarak, sırları açığa çıkarmadan yenileme token'larını (refresh token) yerel olarak şifreleyen güvenli bir kimlik bilgisi yönetim sistemi entegre ettim."
-      ]
-    },
-    {
-      name: "Codec2Player (SmallestApk) — Ultra Minimal Android Uygulaması",
-      role: "Tek Başına Geliştirici · Java",
-      dates: "Haz 2026 – Günümüz",
-      platform: "Android",
-      links: [
-        { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" }
-      ],
-      bullets: [
-        "Cihazda mutlak en küçük kurulu boyutu (yaklaşık 20 KB kurulu boyut) hedefleyen ultra minimalist bir Android ses çalar uygulaması geliştirdim.",
-        "Uygulamayı saf Java ve temel Android bileşenlerini kullanarak, AndroidX ve Kotlin çalışma zamanı (runtime) gibi ağır kütüphaneleri tamamen devreden çıkararak tasarladım.",
-        "Android'in ART 'dex2oat' derlemesini atlamak için bir mekanizma keşfedip kullandım, böylece cihazdaki kurulu boyutun doğrudan ham APK boyutuyla tamamen aynı kalmasını sağladım.",
-        "Uygulama kapandığında verileri otomatik olarak temizleyen özel bir önbellek yönetimi yaşam döngüsü uygulayarak cihazda neredeyse sıfır veri şişmesini (data bloat) garanti ettim.",
-        "Taşınabilir JDK/SDK araçları ve PowerShell kullanarak EC tabanlı v1 imzalı APK'lar üretmek için tamamen otomatik, çevrimdışı çalışabilen bir derleme ardışık düzeni (pipeline) oluşturdum."
-      ]
     }
   ],
 
   // Proje açıklamaları PDF'ten VERBATIM:
   projects: [
     {
-      name: "The Don't Fall", kind: "C# · Unity Oyunu", tags: ["2D","Hikâye","Platform","Macera"], dates: "Haz 2023 – Eyl 2023",
+      name: "YoutubePlaylistSynchroniszer", kind: "C# · WinForms", tags: ["OAuth", "Masaüstü", "Senkronizasyon"], dates: "Haz 2026",
+      image: "resimler/YoutubePlaylistSynchroniszer.png",
+      desc: "Yerel klasörleri YouTube oynatma listeleriyle (gizli/liste dışı dahil) senkronize tutan, Google OAuth PKCE döngüsü (loopback) akışına sahip sağlam bir masaüstü uygulaması. Arka planda başsız (headless) çalışabilen, UI yükü olmadan doğrudan sistem başlangıcında görev çubuğu entegrasyonuyla çalışmak üzere tasarlanmış bir mod mühendisliği içerir.",
+      links: [ { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/YoutubePlaylistSynchroniszer", type: "github" } ]
+    },
+    {
+      name: "Codec2Player", kind: "Java · Android", tags: ["Android", "Performans", "Düşük-seviye"], dates: "Haz 2026",
+      image: "resimler/Codec2Player.png",
+      desc: "Cihazda mutlak en küçük kurulu boyutu (yaklaşık 20 KB kurulu boyut) hedefleyen ultra minimalist bir Android ses çalar uygulaması geliştirdim. Android'in ART 'dex2oat' derlemesini atlamak için bir mekanizma keşfedip kullandım, böylece cihazdaki kurulu boyutun doğrudan ham APK boyutuyla tamamen aynı kalmasını sağladım.",
+      links: [ { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" } ]
+    },
+    {
+      name: "The Don't Fall", kind: "C# · Unity Oyunu", tags: ["2D", "Platform"], dates: "Haz 2023 – Eyl 2023",
       image: "resimler/image%20(5).webp",
-      desc: "Düşmemeye çalış ve kazan. 1 haftada bitirdiğim bir 2D platform oyunu. itch.io sayfamdan oynayabilirsiniz.",
+      desc: "<b>Gelişmiş mekanikleri ve bölüm tasarımını</b> sergileyen dinamik bir 2D platform oyunu. Akıcı ve tepkisel 2D hareket mekaniklerini kodladım ve sürükleyici bir oynanış döngüsü sunmak için zorlayıcı bölümleri sıfırdan tasarladım.",
       links: [
         { label: "Kaynak Kod",    href: "https://github.com/muhammetozeski/DontFall", type: "github" },
         { label: "Dene",         href: "https://fivza.itch.io/dont-fall", type: "itch" },
@@ -372,7 +352,7 @@ const DATA = {
     {
       name: "RPG Game", kind: "C# · Unity Oyunu", tags: ["RPG","Macera","Aksiyon"], dates: "Oca 2023 – Günümüz",
       image: "resimler/2023-01-15%2006.09.16.webp",
-      desc: "Tek başıma tasarlayıp geliştirdiğim birinci şahıs 3D RPG prototipi (kapsam olarak Skyrim'e benzer). Yüksek oranda optimize edilmiş veri yapıları, sağlam bir etkileşim mimarisi ve dinamik diyaloglar için yapay zeka hizmetleri entegre ederek, gelişmiş problem çözme becerilerimi ve Unity'nin varsayılan çözümlerinin ötesine geçen motor düzeyindeki optimizasyonlarımı ortaya koydum.",
+      desc: "Tek başıma tasarlayıp geliştirdiğim birinci şahıs 3D RPG prototipi (kapsam olarak Skyrim'e benzer). <b>Yüksek oranda optimize edilmiş veri yapıları</b>, sağlam bir etkileşim mimarisi ve dinamik diyaloglar için yapay zeka hizmetleri entegre ederek, gelişmiş problem çözme becerilerimi ve Unity'nin varsayılan çözümlerinin ötesine geçen motor düzeyindeki optimizasyonlarımı ortaya koydum.",
       links: [
         { label: "Oynanış Videosu",     href: "https://www.youtube.com/watch?v=A_ObTK2zv24", type: "youtube" },
         { label: "Tanıtım Videosu",    href: "https://www.youtube.com/watch?v=gXWMgHb09Lg", type: "youtube" },
@@ -382,15 +362,15 @@ const DATA = {
       ]
     },
     {
-      name: "TPMPass", kind: "C# · Parola Yöneticisi", tags: ["Kriptografi","Bellek Koruması","DPAPI - TPM"], dates: "Şub 2026 – Mar 2026",
+      name: "TPMPass", kind: "C# · Parola Yöneticisi", tags: ["Kriptografi","Bellek Koruması","DPAPI - TPM"], dates: "Şub 2026",
       image: "resimler/image.webp",
-      desc: "Windows Veri Koruma API'sini (DPAPI) kullanan, son derece güvenli, parolasız bir parola yöneticisi. Tek başıma tasarlayıp geliştirdiğim bu uygulama, şifrelemeyi doğrudan kullanıcının Windows kimliğine ve temel TPM donanımına bağlayarak geleneksel ana parolaların yerini alıyor. Proje; gelişmiş veri koruması, güvenli bellek yönetimi ve sistem düzeyinde entegrasyonlar konusundaki yetkinliğimi öne çıkarıyor.",
+      desc: "<b>Windows Veri Koruma API'sini (DPAPI)</b> kullanan, son derece güvenli, parolasız bir parola yöneticisi. Tek başıma tasarlayıp geliştirdiğim bu uygulama, şifrelemeyi doğrudan kullanıcının Windows kimliğine ve temel TPM donanımına bağlayarak geleneksel ana parolaların yerini alıyor. Proje; gelişmiş veri koruması, güvenli bellek yönetimi ve sistem düzeyinde entegrasyonlar konusundaki yetkinliğimi öne çıkarıyor.",
       links: [ { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/TPMPass", type: "github" } ]
     },
     {
-      name: "Space Traveler", kind: "C# · Unity Oyunu", tags: ["RPG","Aksiyon","Macera"], dates: "Oca 2023 – Günümüz",
+      name: "Space Traveler", kind: "C# · Unity Oyunu", tags: ["RPG","Aksiyon","Macera"], dates: "Ağu 2022 – Eyl 2023",
       image: "resimler/Space%20Traveller.mp4_20230922_080854.835.webp",
-      desc: "Hızlı tempolu engel üretimini ve sürekli hareketi kaldıracak şekilde tasarlanmış, yüksek performanslı uçuş mekaniklerine sahip bir 3D uzay macerası oyunu. Sıfır tahsisatlı (zero-allocation) bellek yönetimi, birbirinden bağımsız girdi işleme ve geliştirmeyi hızlandıran kapsamlı özel editör araçlarına odaklanarak tüm kod tabanını tek başıma tasarladım.",
+      desc: "Hızlı tempolu engel üretimini ve sürekli hareketi kaldıracak şekilde tasarlanmış, yüksek performanslı uçuş mekaniklerine sahip bir 3D uzay macerası oyunu. <b>Sıfır tahsisatlı (zero-allocation) bellek yönetimi</b>, birbirinden bağımsız girdi işleme ve geliştirmeyi hızlandıran kapsamlı özel editör araçlarına odaklanarak tüm kod tabanını tek başıma tasarladım.",
       links: [
         { label: "Oynanış Videosu", href: "https://www.youtube.com/watch?v=6jBO-OzlgoQ", type: "youtube" },
         { label: "Ekran Görüntüleri",    href: "https://drive.google.com/file/d/1G82ogkChDa-tmfO0NXDka8WS1vIAxrTs/view?usp=sharing", type: "drive" },
@@ -398,9 +378,9 @@ const DATA = {
       ]
     },
     {
-      name: "Bird Simulator", kind: "C# · Unity Oyunu", tags: ["Simülasyon","360° Uçuş mekaniği"], dates: "Eyl 2023 – Günümüz",
+      name: "Bird Simulator", kind: "C# · Unity Oyunu", tags: ["Simülasyon","360° Uçuş mekaniği"], dates: "Eyl 2023",
       image: "resimler/Bird%20simulator.mp4_20230922_084026.617.webp",
-      desc: "Gelişmiş matematiksel programlama ve fizik entegrasyonlarını sergileyen bir 3D simülasyon prototipi. Bu projeyi; sağlam 360 derece uçuş mekaniklerini, fizik tabanlı hareket denetleyicilerini ve uçuş deneyimini akıcılaştıran birbirinden bağımsız girdi (input) sistemlerini göstermek amacıyla tek başıma tasarlayıp geliştirdim.",
+      desc: "<b>Gelişmiş matematiksel programlama</b> ve fizik entegrasyonlarını sergileyen bir 3D simülasyon prototipi. Bu projeyi; sağlam 360 derece uçuş mekaniklerini, fizik tabanlı hareket denetleyicilerini ve uçuş deneyimini akıcılaştıran birbirinden bağımsız girdi (input) sistemlerini göstermek amacıyla tek başıma tasarlayıp geliştirdim.",
       links: [
         { label: "Oynanış Videosu", href: "https://www.youtube.com/watch?v=nnjxCj8EjHY", type: "youtube" },
         { label: "Ekran Görüntüleri",    href: "https://drive.google.com/file/d/1eSXxWdK-TCBpWcolGCXtUbPw1bTGU7UO/view?usp=sharing", type: "drive" },
@@ -474,7 +454,7 @@ const DATA = {
       {label:"Git"},{label:"Visual Studio"},{label:"MSBuild çoklu hedefleme"},{label:"Kaynak üreteçleri"},{label:"System.Text.Json özel dönüştürücüleri"},{label:"Birim ve entegrasyon testi"},{label:"Teknik dokümantasyon"},{label:"Derleme ve yayın mühendisliği"} ] }
   ],
 
-  // "Systems I've designed" — href olan TIKLANABİLİR, GitHub kanıtına gider
+  // "Systems I've designed" - href olan TIKLANABİLİR, GitHub kanıtına gider
   systems: [
     {label:"Nesne havuzlama sistemi", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/ObjectPoolingSystem.cs"},
     {label:"Özel girdi sistemi", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/Input%20System/PlayingInputController.cs"},
@@ -497,7 +477,7 @@ const DATA = {
 
   strengths: ["Sistem mimarisi","İleri düzey C#/.NET","Eşzamanlılık ve performans","Çok platformlu mobil","Gelir modeli / Uygulama içi satın alma","Bulut ve dayanıklılık","Arayüz ve tasarım sistemleri","Test ve teşhis","Kök neden hata ayıklama"],
 
-  education: { degree:"Lisans — Bilgisayar Teknolojisi ve Bilişim Sistemleri", faculty:"Fen Fakültesi", school:"Bartın Üniversitesi, Türkiye", dates:"2019 – 2024", gpa:"Not Ort. 3.2 / 4.0" },
+  education: { degree:"Lisans - Bilgisayar Teknolojisi ve Bilişim Sistemleri", faculty:"Fen Fakültesi", school:"Bartın Üniversitesi, Türkiye", dates:"2019 – 2024", gpa:"Not Ort. 3.2 / 4.0" },
 
   languages: [ {name:"İngilizce", level:"Akıcı"}, {name:"Türkçe", level:"Ana dil"} ]
 };
@@ -541,7 +521,7 @@ function linkBtn(l, isLast, key){
   const badge = BADGE_BY_TYPE[l.type] || BADGE_BY_TYPE.web;
   const isSteam = l.type === "steam";
   const steam = isSteam ? " steam" : "";
-  // Steam'de: "View On [STEAM svg]" — once yazi, sonra steam logosu.
+  // Steam'de: "View On [STEAM svg]" - once yazi, sonra steam logosu.
   const inner = isSteam
     ? `<span>${esc(l.label)}</span><img src="${badge}" alt="Steam">`
     : `<img src="${badge}" alt=""><span>${esc(l.label)}</span>`;
@@ -723,3 +703,4 @@ render();
 </script>
 </body>
 </html>
+

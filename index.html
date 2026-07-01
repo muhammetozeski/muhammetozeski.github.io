@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Muhammet Mustafa Özeski — CV</title>
+<title>Muhammet Mustafa Özeski - CV</title>
 <!--
   ============================================================================
   DÜZENLEME REHBERİ (Editing guide)
@@ -168,7 +168,7 @@
   .lbtn.steam img{height:15px;}
 
   /* width/height !important: kapsayici buton img kurallari (.sbtn img, .store-badge img,
-     .lbtn img ...) ezmesin diye — boylece TUM click ikonlari tek --clickicon-size'dan gelir.
+     .lbtn img ...) ezmesin diye - boylece TUM click ikonlari tek --clickicon-size'dan gelir.
      Konum: global --clickicon-offset-x/y (hepsini birden kaydirir) + her ikonun kendi
      --clickicon-dx/dy degeri (sadece o ikonu kaydirir, normalde 0). */
   .clickicon{position:absolute; right:0; bottom:0;
@@ -178,7 +178,7 @@
       calc(7px + var(--clickicon-offset-y) + var(--clickicon-dy,0px)));
     filter:drop-shadow(0 1px 2px rgba(0,0,0,.3)); pointer-events:none;}
 
-  /* experience media — gorseller kart icinde ana yazinin ustunde */
+  /* experience media - gorseller kart icinde ana yazinin ustunde */
   .exp-shots{display:flex; justify-content:center; align-items:flex-start; gap:26px;
     flex-wrap:wrap; margin:11px 0 4px;}
   .exp-shots img{height:228px; width:auto; border-radius:14px; background:#fff;
@@ -252,7 +252,7 @@ const DATA = {
   availability: "Open to relocation (any city or country) · Available immediately",
   clickIcon: "resimler/image%20(6).webp", // "tıklanabilir" imleci; her buton GRUBUNDA yalnız 1 butonun sağ-alt köşesine
 
-  summary: "C# expert and software engineer building production software since 2019, end to end across mobile, web, desktop and games. I architect systems — not just write features — and ship them to real users: I solo-architected and released a commercial cross-platform .NET MAUI Blazor Hybrid app to both the App Store and Google Play, and was lead developer on a commercial Unity game published on Steam. Strong across the whole C#/.NET stack (MAUI, Blazor, Windows desktop) and Unity, with a real track record in architecture, performance, concurrency, monetization, security/cryptography, and clean, thoroughly documented code.",
+  summary: "C# expert and software engineer building production software since 2019, end to end across mobile, web, desktop and games. I architect systems - not just write features - and ship them to real users: I solo-architected and released a commercial cross-platform .NET MAUI Blazor Hybrid app to both the App Store and Google Play, and was lead developer on a commercial Unity game published on Steam. Strong across the whole C#/.NET stack (MAUI, Blazor, Windows desktop) and Unity, with a real track record in architecture, performance, concurrency, monetization, security/cryptography, and clean, thoroughly documented code.",
 
   contact: [
     { label: "Website",        value: "muhammetozeski.github.io",            href: "https://muhammetozeski.github.io",           emoji: "🌐" },
@@ -267,8 +267,8 @@ const DATA = {
     {
       featured: true,
       featuredText: "Featured · Shipped to both stores",
-      name: "CulturEnglish — Cross-Platform Mobile App",
-      role: "Solo Software Architect & Developer · .NET 10 · MAUI Blazor Hybrid",
+      name: "CulturEnglish - Cross-Platform Mobile App",
+      role: "Software Architect & Developer · .NET 10 · MAUI Blazor Hybrid",
       dates: "April 2026 – June 2026",
       note: "23 Apr 2026 - 23 Jun 2026",
       shots: [
@@ -279,11 +279,11 @@ const DATA = {
         { label: "App Store",    href: "https://apps.apple.com/us/app/culturenglish/id6760410539",                 badge: "badges/appstore-get-it-badge.svg" },
         { label: "Google Play",  href: "https://play.google.com/store/apps/details?id=com.culturel.english",        badge: "badges/googleplay-get-it-on-badge.svg" }
       ],
-      oneLine: "A commercial language-learning app I solo-architected and shipped to both stores (v4.0.0) — ~19.6K lines across 217 source files, re-engineered from an existing Flutter app onto an architecture of my own design.",
+      oneLine: "A commercial language-learning app I solo-architected and shipped to both stores (v4.0.0) - ~19.6K lines across 217 source files, re-engineered from an existing Flutter app onto an architecture of my own design.",
       bullets: [
         "Solo-architected and shipped a commercial cross-platform app to the App Store and Google Play; designed the structure of all 217 source files and every screen myself.",
         "Designed a custom inheritance-based Blazor page architecture (after rejecting MVVM as a poor fit for MAUI Blazor Hybrid) and solved the non-obvious dual-instance lifecycle bugs the framework does not guard against.",
-        "Built idempotent, crash-recoverable In-App Purchases over Google Play Billing v8 and Apple StoreKit — and caught and fixed a real money-losing concurrency race in the wallet with a single serialization lock.",
+        "Built idempotent, crash-recoverable In-App Purchases over Google Play Billing v8 and Apple StoreKit - and caught and fixed a real money-losing concurrency race in the wallet with a single serialization lock.",
         "Engineered a unified cross-platform native event hub over the Android and iOS lifecycles; verified the full iOS build on Windows by reading MAUI's package metadata via reflection.",
         "Built an offline-first cloud library on Firebase (Auth, Firestore, Cloud Storage, FCM) with two-tier caching, version-gated delta sync, and Polly-based resilient I/O with enforced timeouts.",
         "Built a fully C#-driven design-token system, a custom on-device test harness with branch-specific root-cause diagnostics, and maintained design specs, a pre-release audit, and a 33-entry engineering journal."
@@ -291,26 +291,26 @@ const DATA = {
     },
     {
       featured: true,
-      featuredText: "Enterprise Architecture · AI-Assisted Scale",
-      name: "VirusTotal Scanner — Enterprise Security Suite",
+      featuredText: "Security Architecture · AI-Assisted Scale",
+      name: "VirusTotal Scanner - Security Utility",
       role: "Senior Software Architect & Developer · C# · WinForms",
-      dates: "Jan 2024 – Present",
+      dates: "Jun 2026",
       shots: [ "resimler/VirusTotalProject.png" ],
       links: [
         { label: "Source Code", href: "https://github.com/MuhammetOzeski/VirusTotalScanner", type: "github" }
       ],
-      oneLine: "A massive, 20,000+ LOC enterprise-grade desktop security utility comprised of over 60 core C# services. I solo-architected the system and authored 120+ technical RFCs, utilizing AI strictly as an implementation engine to exponentially scale output while maintaining absolute architectural control.",
+      oneLine: "A massive, 20,000+ LOC desktop security utility comprised of over 60 core C# services. I solo-architected the system and authored 120+ technical RFCs, utilizing AI strictly as an implementation engine to exponentially scale output while maintaining absolute architectural control.",
       bullets: [
-        "Architected a massive 20,000+ line codebase utilizing an extremely disciplined, document-driven development lifecycle.",
-        "Authored over 120 comprehensive architectural design documents (RFCs), defining rigid concurrency and memory constraints before leveraging Claude Code as an implementation accelerator.",
-        "Implemented aggressive memory optimization using ArrayPool for 1 MB hashing buffers, eradicating GC latency spikes during recursive folder sweeps.",
-        "Built deep OS-level integrations using WMI (Win32_ProcessStartTrace) to intercept and scan unknown processes the exact moment they execute.",
-        "Engineered a zero-quota API fallback using a headless Chromium WebView2 instance, successfully hooking into WebResourceResponseReceived to bypass invisible reCAPTCHAs.",
-        "Designed resilient local storage via AtomicFile JSON saves and a strictly filtered BindingList event storm handler to maintain 60fps UI even with massive row counts."
+        "Architected a massive <b>20,000+ line codebase</b> utilizing an extremely disciplined, document-driven development lifecycle.",
+        "Authored over <b>120 comprehensive architectural design documents (RFCs)</b>, defining rigid concurrency and memory constraints before leveraging AI as an implementation accelerator.",
+        "Implemented aggressive <b>memory optimization using ArrayPool</b> for 1 MB hashing buffers, eradicating GC latency spikes during recursive folder sweeps.",
+        "Built deep OS-level integrations using <b>WMI (Win32_ProcessStartTrace)</b> to intercept and scan unknown processes the exact moment they execute.",
+        "Engineered a zero-quota API fallback using a <b>headless Chromium WebView2</b> instance, successfully hooking into WebResourceResponseReceived to bypass invisible reCAPTCHAs.",
+        "Designed resilient local storage via AtomicFile JSON saves and a strictly filtered BindingList event storm handler to <b>maintain 60fps UI</b> even with massive row counts."
       ]
     },
     {
-      name: "The Simple Balance — Commercial Game",
+      name: "The Simple Balance - Commercial Game",
       role: "Lead Developer · Unity · C#",
       dates: "September 2024 – July 2025",
       platform: "Steam (Windows)",
@@ -321,47 +321,27 @@ const DATA = {
         "Hired by the project owner (Kai Niklas) as lead developer to take a ~65%-complete game to a published Steam release.",
         "Built the remaining 5 levels, a random encounter system and other gameplay systems, designed and added new quests and stories, fixed bugs, and published the title on Steam in July 2025."
       ]
-    },
-    {
-      name: "YoutubePlaylistSynchroniszer — Desktop Media Sync",
-      role: "Solo Developer · C# · WinForms",
-      dates: "Jun 2026 – Present",
-      platform: "Windows",
-      links: [
-        { label: "Source Code", href: "https://github.com/muhammetozeski/YoutubePlaylistSynchroniszer", type: "github" }
-      ],
-      bullets: [
-        "Built a robust desktop application that keeps local folders locked in sync with YouTube playlists (including private/unlisted), featuring a Google OAuth PKCE loopback flow.",
-        "Engineered a headless background daemon mode specifically designed for startup execution without UI overhead, utilizing system tray integrations.",
-        "Implemented a highly resilient task pipeline with Polly, handling transient network errors and API quotas through exponential backoff.",
-        "Designed a resolution-independent, tabbed GUI structure in WinForms that natively scales to any DPI without absolute coordinates.",
-        "Integrated a secure credential management system using DPAPI to encrypt refresh tokens locally without exposing secrets."
-      ]
-    },
-    {
-      name: "Codec2Player (SmallestApk) — Ultra-Minimal Android App",
-      role: "Solo Developer · Java",
-      dates: "Jun 2026 – Present",
-      platform: "Android",
-      links: [
-        { label: "Source Code", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" }
-      ],
-      bullets: [
-        "Developed an ultra-minimalist Android audio player prioritizing the absolute smallest installed footprint on the device (~20 KB installed).",
-        "Engineered the application using pure Java and core Android components, completely stripping out heavyweight libraries like AndroidX and Kotlin runtime.",
-        "Discovered and utilized a mechanism to bypass Android's ART 'dex2oat' compilation, ensuring the installed size on the device remains strictly identical to the raw APK size.",
-        "Implemented a custom cache management lifecycle that automatically purges application data on closure, guaranteeing near-zero residual data bloat.",
-        "Created a completely automated, offline-capable build pipeline using PowerShell and portable JDK/SDK tools to build and sign EC-based v1-only APKs."
-      ]
     }
   ],
 
   // Proje açıklamaları PDF'ten VERBATIM:
   projects: [
     {
-      name: "The Don't Fall", kind: "C# · Unity Game", tags: ["2D","Story","Platformer","Adventure"], dates: "Jun 2023 – Sep 2023",
+      name: "YoutubePlaylistSynchroniszer", kind: "C# · WinForms", tags: ["OAuth", "Desktop", "Sync"], dates: "Jun 2026",
+      image: "resimler/YoutubePlaylistSynchroniszer.png",
+      desc: "A robust desktop application that keeps local folders locked in sync with YouTube playlists (including private/unlisted), featuring a Google OAuth PKCE loopback flow. Engineered a headless background daemon mode specifically designed for startup execution without UI overhead, utilizing system tray integrations.",
+      links: [ { label: "Source Code", href: "https://github.com/muhammetozeski/YoutubePlaylistSynchroniszer", type: "github" } ]
+    },
+    {
+      name: "Codec2Player", kind: "Java · Android", tags: ["Android", "Performance", "Low-level"], dates: "Jun 2026",
+      image: "resimler/Codec2Player.png",
+      desc: "Developed an ultra-minimalist Android audio player prioritizing the absolute smallest installed footprint on the device (~20 KB installed). Discovered and utilized a mechanism to bypass Android's ART 'dex2oat' compilation, ensuring the installed size on the device remains strictly identical to the raw APK size.",
+      links: [ { label: "Source Code", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" } ]
+    },
+    {
+      name: "The Don't Fall", kind: "C# · Unity Game", tags: ["2D", "Platformer"], dates: "Jun 2023 – Sep 2023",
       image: "resimler/image%20(5).webp",
-      desc: "Try not to fall and win. This is a 2d platformer that I've finished in 1 week. You can play it on my itch.io.",
+      desc: "A dynamic 2D platformer showcasing <b>advanced mechanics and level design</b>. Engineered tight, responsive 2D movement and crafted challenging levels from scratch to deliver an engaging gameplay loop.",
       links: [
         { label: "Source Code",    href: "https://github.com/muhammetozeski/DontFall", type: "github" },
         { label: "Try It",         href: "https://fivza.itch.io/dont-fall", type: "itch" },
@@ -372,7 +352,7 @@ const DATA = {
     {
       name: "RPG Game", kind: "C# · Unity Game", tags: ["RPG","Adventure","Action"], dates: "Jan 2023 – Present",
       image: "resimler/2023-01-15%2006.09.16.webp",
-      desc: "A first-person 3D RPG prototype (comparable to Skyrim in scope) that I solo-architected and developed. Engineered highly optimized data structures, a robust interaction architecture, and integrated AI services for dynamic dialogue, demonstrating advanced problem-solving skills and engine-level optimizations beyond Unity's default solutions.",
+      desc: "A first-person 3D RPG prototype (comparable to Skyrim in scope) that I solo-architected and developed. Engineered <b>highly optimized data structures</b>, a robust interaction architecture, and integrated AI services for dynamic dialogue, demonstrating advanced problem-solving skills and engine-level optimizations beyond Unity's default solutions.",
       links: [
         { label: "Gameplay Video",     href: "https://www.youtube.com/watch?v=A_ObTK2zv24", type: "youtube" },
         { label: "Intro Video",        href: "https://www.youtube.com/watch?v=gXWMgHb09Lg", type: "youtube" },
@@ -382,15 +362,15 @@ const DATA = {
       ]
     },
     {
-      name: "TPMPass", kind: "C# · Password Manager", tags: ["Cryptography","Memory Protection","DPAPI - TPM"], dates: "Feb 2026 – Mar 2026",
+      name: "TPMPass", kind: "C# · Password Manager", tags: ["Cryptography","Memory Protection","DPAPI - TPM"], dates: "Feb 2026",
       image: "resimler/image.webp",
-      desc: "A highly secure, passwordless password manager for Windows that leverages the Windows Data Protection API (DPAPI). Solo-architected and developed, the application replaces traditional master passwords by tying encryption directly to the user's Windows identity and underlying TPM hardware. The project emphasizes advanced data protection, secure memory management, and system-level integrations.",
+      desc: "A highly secure, passwordless password manager for Windows that leverages the <b>Windows Data Protection API (DPAPI)</b>. Solo-architected and developed, the application replaces traditional master passwords by tying encryption directly to the user's Windows identity and underlying TPM hardware. The project emphasizes advanced data protection, secure memory management, and system-level integrations.",
       links: [ { label: "Source Code", href: "https://github.com/muhammetozeski/TPMPass", type: "github" } ]
     },
     {
-      name: "Space Traveler", kind: "C# · Unity Game", tags: ["RPG","Action","Adventure"], dates: "Jan 2023 – Present",
+      name: "Space Traveler", kind: "C# · Unity Game", tags: ["RPG","Action","Adventure"], dates: "Aug 2022 – Sep 2023",
       image: "resimler/Space%20Traveller.mp4_20230922_080854.835.webp",
-      desc: "A 3D space adventure game with high-performance flight mechanics, engineered to handle fast-paced obstacle generation and continuous movement. Solo-architected the entire codebase with a focus on zero-allocation memory management, decoupled input handling, and extensive custom editor tooling to streamline development.",
+      desc: "A 3D space adventure game with high-performance flight mechanics, engineered to handle fast-paced obstacle generation and continuous movement. Solo-architected the entire codebase with a focus on <b>zero-allocation memory management</b>, decoupled input handling, and extensive custom editor tooling to streamline development.",
       links: [
         { label: "Gameplay Video", href: "https://www.youtube.com/watch?v=6jBO-OzlgoQ", type: "youtube" },
         { label: "Screenshots",    href: "https://drive.google.com/file/d/1G82ogkChDa-tmfO0NXDka8WS1vIAxrTs/view?usp=sharing", type: "drive" },
@@ -398,9 +378,9 @@ const DATA = {
       ]
     },
     {
-      name: "Bird Simulator", kind: "C# · Unity Game", tags: ["Simulation","360° Fly mechanics"], dates: "Sep 2023 – Present",
+      name: "Bird Simulator", kind: "C# · Unity Game", tags: ["Simulation","360° Fly mechanics"], dates: "Sep 2023",
       image: "resimler/Bird%20simulator.mp4_20230922_084026.617.webp",
-      desc: "A 3D simulation prototype showcasing advanced mathematical programming and physics integrations. I solo-architected and developed this project to demonstrate robust 360-degree flight mechanics, physics-driven movement controllers, and decoupled input systems to streamline the flight experience.",
+      desc: "A 3D simulation prototype showcasing <b>advanced mathematical programming</b> and physics integrations. I solo-architected and developed this project to demonstrate robust 360-degree flight mechanics, physics-driven movement controllers, and decoupled input systems to streamline the flight experience.",
       links: [
         { label: "Gameplay Video", href: "https://www.youtube.com/watch?v=nnjxCj8EjHY", type: "youtube" },
         { label: "Screenshots",    href: "https://drive.google.com/file/d/1eSXxWdK-TCBpWcolGCXtUbPw1bTGU7UO/view?usp=sharing", type: "drive" },
@@ -474,7 +454,7 @@ const DATA = {
       {label:"Git"},{label:"Visual Studio"},{label:"MSBuild multi-targeting"},{label:"Source generators"},{label:"System.Text.Json custom converters"},{label:"Unit & integration testing"},{label:"Technical documentation"},{label:"Build & release engineering"} ] }
   ],
 
-  // "Systems I've designed" — href olan TIKLANABİLİR, GitHub kanıtına gider
+  // "Systems I've designed" - href olan TIKLANABİLİR, GitHub kanıtına gider
   systems: [
     {label:"Object pooling system", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/ObjectPoolingSystem.cs"},
     {label:"Custom input system", href:"https://github.com/muhammetozeski/Space-Traveler/blob/main/Assets/Main%20Game/Scripts/Input%20System/PlayingInputController.cs"},
@@ -497,7 +477,7 @@ const DATA = {
 
   strengths: ["System architecture","Advanced C#/.NET","Concurrency & performance","Cross-platform mobile","Monetization / IAP","Cloud & resilience","UI & design systems","Testing & diagnostics","Root-cause debugging"],
 
-  education: { degree:"B.Sc. — Computer Technology & Information Systems", faculty:"Faculty of Science", school:"Bartın University, Türkiye", dates:"2019 – 2024", gpa:"GPA 3.2 / 4.0" },
+  education: { degree:"B.Sc. - Computer Technology & Information Systems", faculty:"Faculty of Science", school:"Bartın University, Türkiye", dates:"2019 – 2024", gpa:"GPA 3.2 / 4.0" },
 
   languages: [ {name:"English", level:"Fluent"}, {name:"Turkish", level:"Native"} ]
 };
@@ -541,7 +521,7 @@ function linkBtn(l, isLast, key){
   const badge = BADGE_BY_TYPE[l.type] || BADGE_BY_TYPE.web;
   const isSteam = l.type === "steam";
   const steam = isSteam ? " steam" : "";
-  // Steam'de: "View On [STEAM svg]" — once yazi, sonra steam logosu.
+  // Steam'de: "View On [STEAM svg]" - once yazi, sonra steam logosu.
   const inner = isSteam
     ? `<span>${esc(l.label)}</span><img src="${badge}" alt="Steam">`
     : `<img src="${badge}" alt=""><span>${esc(l.label)}</span>`;
@@ -722,3 +702,4 @@ render();
 </script>
 </body>
 </html>
+
