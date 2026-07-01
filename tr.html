@@ -266,6 +266,7 @@ const DATA = {
   experience: [
     {
       featured: true,
+      featuredText: "Öne Çıkan · Her iki mağazada yayında",
       name: "CulturEnglish — Çok Platformlu Mobil Uygulama",
       role: "Tek Başına Yazılım Mimarı ve Geliştirici · .NET 10 · MAUI Blazor Hybrid",
       dates: "Nisan 2026 – Haziran 2026",
@@ -289,6 +290,26 @@ const DATA = {
       ]
     },
     {
+      featured: true,
+      featuredText: "Kurumsal Mimari · Yapay Zeka Destekli Ölçek",
+      name: "VirusTotal Scanner — Kurumsal Güvenlik Paketi",
+      role: "Kıdemli Yazılım Mimarı ve Geliştirici · C# · WinForms",
+      dates: "Oca 2024 – Günümüz",
+      shots: [ "resimler/VirusTotalProject.png" ],
+      links: [
+        { label: "Kaynak Kod", href: "https://github.com/MuhammetOzeski/VirusTotalScanner", type: "github" }
+      ],
+      oneLine: "60'tan fazla temel C# servisi içeren 20.000+ satırlık devasa bir masaüstü güvenlik aracı. Sistemi tek başıma tasarlayıp 120'den fazla teknik tasarım belgesi yazdım; mimari kontrolü tamamen elimde tutarak üretim hızımı yapay zeka ile katlanarak artırdım.",
+      bullets: [
+        "Son derece disiplinli, belge odaklı bir geliştirme döngüsü (document-driven development) ile 20.000+ satırlık devasa bir kod tabanını baştan sona tasarladım.",
+        "Sıkı eşzamanlılık ve bellek kurallarını belirleyen 120'den fazla kapsamlı mimari tasarım belgesi (RFC) yazdıktan sonra Claude Code'u yalnızca kodlama motoru olarak kullandım.",
+        "Derin klasör taramalarında (recursive sweep) çöp toplayıcı (GC) takılmalarını tamamen ortadan kaldırmak için 1 MB'lık hash tamponlarında ArrayPool kullanarak agresif bellek optimizasyonu yaptım.",
+        "Bilinmeyen süreçleri (process) tam çalıştırıldıkları anda yakalayıp taramak için WMI (Win32_ProcessStartTrace) kullanarak derin işletim sistemi entegrasyonları kurdum.",
+        "Görünmez reCAPTCHA'ları aşmak için başsız (headless) bir Chromium WebView2 bileşeniyle sıfır kota yedeği geliştirdim ve ağ isteklerinden JSON verilerini başarıyla çıkardım.",
+        "Büyük veri kümelerinde dahi arayüzün 60 FPS kalması için AtomicFile ile dayanıklı yerel kayıt mekanizmaları ve filtrelenmiş BindingList olay zincirleri tasarladım."
+      ]
+    },
+    {
       name: "The Simple Balance — Ticari Oyun",
       role: "Baş Geliştirici · Unity · C#",
       dates: "Eylül 2024 – Temmuz 2025",
@@ -297,8 +318,40 @@ const DATA = {
       imageCaption: "Tasarladığım bir sahne",
       links: [ { label: "Görüntüle", href: "https://store.steampowered.com/app/1719480/The_Simple_Balance/", type: "steam" } ],
       bullets: [
-        "Proje sahibi (Kai Niklas) tarafından, ~%65'i tamamlanmış bir oyunu Steam'de yayınlanacak hale getirmek üzere baş geliştirici olarak işe alındım.",
-        "Kalan 5 bölümü, rastgele karşılaşma sistemini ve diğer oynanış sistemlerini geliştirdim; yeni görevler ve hikâyeler tasarlayıp ekledim, hataları düzelttim ve oyunu Temmuz 2025'te Steam'de yayınladım."
+        "Proje sahibi (Kai Niklas) tarafından ~%65'i tamamlanmış bir oyunu yayınlanmış bir Steam sürümüne dönüştürmesi için baş geliştirici olarak işe alındım.",
+        "Kalan 5 bölümü, rastgele karşılaşma (random encounter) sistemini ve diğer oynanış sistemlerini oluşturdum, yeni görevler ve hikâyeler tasarlayıp ekledim, hataları düzelttim ve oyunu Temmuz 2025'te Steam'de yayınladım."
+      ]
+    },
+    {
+      name: "YoutubePlaylistSynchroniszer — Masaüstü Medya Senkronizasyonu",
+      role: "Tek Başına Geliştirici · C# · WinForms",
+      dates: "Haz 2026 – Günümüz",
+      platform: "Windows",
+      links: [
+        { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/YoutubePlaylistSynchroniszer", type: "github" }
+      ],
+      bullets: [
+        "Yerel klasörleri YouTube oynatma listeleriyle (gizli/liste dışı dahil) senkronize tutan, Google OAuth PKCE döngüsü (loopback) akışına sahip sağlam bir masaüstü uygulaması geliştirdim.",
+        "Arka planda başsız (headless) çalışabilen, UI yükü olmadan doğrudan sistem başlangıcında görev çubuğu entegrasyonuyla çalışmak üzere tasarlanmış bir mod mühendisliği yaptım.",
+        "Geçici ağ hatalarını ve API kotalarını Polly ile üstel geri çekilme (exponential backoff) stratejisi kullanarak aşan son derece dayanıklı bir görev ardışık düzeni (pipeline) uyguladım.",
+        "WinForms'da mutlak koordinatlar kullanmadan her türlü DPI değerine doğal olarak ölçeklenebilen, sekmeli ve çözünürlükten bağımsız bir GUI yapısı tasarladım.",
+        "DPAPI kullanarak, sırları açığa çıkarmadan yenileme token'larını (refresh token) yerel olarak şifreleyen güvenli bir kimlik bilgisi yönetim sistemi entegre ettim."
+      ]
+    },
+    {
+      name: "Codec2Player (SmallestApk) — Ultra Minimal Android Uygulaması",
+      role: "Tek Başına Geliştirici · Java",
+      dates: "Haz 2026 – Günümüz",
+      platform: "Android",
+      links: [
+        { label: "Kaynak Kod", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" }
+      ],
+      bullets: [
+        "Cihazda mutlak en küçük kurulu boyutu (yaklaşık 20 KB kurulu boyut) hedefleyen ultra minimalist bir Android ses çalar uygulaması geliştirdim.",
+        "Uygulamayı saf Java ve temel Android bileşenlerini kullanarak, AndroidX ve Kotlin çalışma zamanı (runtime) gibi ağır kütüphaneleri tamamen devreden çıkararak tasarladım.",
+        "Android'in ART 'dex2oat' derlemesini atlamak için bir mekanizma keşfedip kullandım, böylece cihazdaki kurulu boyutun doğrudan ham APK boyutuyla tamamen aynı kalmasını sağladım.",
+        "Uygulama kapandığında verileri otomatik olarak temizleyen özel bir önbellek yönetimi yaşam döngüsü uygulayarak cihazda neredeyse sıfır veri şişmesini (data bloat) garanti ettim.",
+        "Taşınabilir JDK/SDK araçları ve PowerShell kullanarak EC tabanlı v1 imzalı APK'lar üretmek için tamamen otomatik, çevrimdışı çalışabilen bir derleme ardışık düzeni (pipeline) oluşturdum."
       ]
     }
   ],
@@ -568,49 +621,53 @@ function render(){
   `;
 
   /* ===== MAIN ===== */
-  const feat = d.experience.find(e=>e.featured);
-  const stores = feat.storeBadges.map((s,i)=>{
-    const last = i === feat.storeBadges.length-1;
-    return `<a class="store-badge" href="${s.href}" target="_blank" rel="noopener">`
-      + `<img src="${s.badge}" alt="${esc(s.label)}">` + (last ? clickIcon('stores') : "") + `</a>`;
+  const expHtml = d.experience.map((exp, expIdx) => {
+    if (exp.featured) {
+      const stores = (exp.storeBadges||[]).map((s,i)=>{
+        const last = i === exp.storeBadges.length-1;
+        return `<a class="store-badge" href="${s.href}" target="_blank" rel="noopener">`
+          + `<img src="${s.badge}" alt="${esc(s.label)}">` + (last ? clickIcon('stores') : "") + `</a>`;
+      }).join("");
+      const links = (exp.links||[]).map((l,i)=>linkBtn(l, i===exp.links.length-1, 'exp-'+expIdx)).join("");
+      const featShots = (exp.shots||[]).map(s=>`<img src="${s}" alt="${esc(exp.name)}">`).join("");
+      
+      return `
+        <div class="card feat">
+          <div class="exp-top">
+            <div>
+              <span class="feat-badge">${esc(exp.featuredText || "Öne Çıkan")}</span>
+              <div class="exp-name">${esc(exp.name)}</div>
+              <div class="exp-role">${esc(exp.role)}</div>
+            </div>
+            <div><div class="exp-dates">${esc(exp.dates)}</div>${exp.note ? `<div class="exp-note">${esc(exp.note)}</div>` : ''}</div>
+          </div>
+          ${featShots ? `<div class="exp-shots">${featShots}</div>` : ""}
+          ${exp.oneLine ? `<div class="exp-oneline">${esc(exp.oneLine)}</div>` : ""}
+          <div class="btn-row">${stores}${links}</div>
+          <ul class="bullets">${exp.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+        </div>`;
+    } else {
+      const links = (exp.links||[]).map((l,i)=>linkBtn(l, i===exp.links.length-1, 'simpleBalance')).join("");
+      const sbFig = exp.image
+        ? `<figure class="exp-figure"><img src="${exp.image}" alt="${esc(exp.name)}">`
+          + (exp.imageCaption ? `<figcaption>${esc(exp.imageCaption)}</figcaption>` : "")
+          + `</figure>`
+        : "";
+      return `
+        <div class="card">
+          <div class="exp-top">
+            <div>
+              <div class="exp-name">${esc(exp.name)}</div>
+              <div class="exp-role">${esc(exp.role)}${exp.platform ? ` · ${esc(exp.platform)}` : ''}</div>
+            </div>
+            <div class="exp-dates">${esc(exp.dates)}</div>
+          </div>
+          ${sbFig}
+          <ul class="bullets">${exp.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+          <div class="btn-row">${links}</div>
+        </div>`;
+    }
   }).join("");
-  const featShots = (feat.shots||[]).map(s=>`<img src="${s}" alt="${esc(feat.name)}">`).join("");
-  const featHtml = `
-    <div class="card feat">
-      <div class="exp-top">
-        <div>
-          <span class="feat-badge">Öne Çıkan · Her iki mağazada yayında</span>
-          <div class="exp-name">${esc(feat.name)}</div>
-          <div class="exp-role">${esc(feat.role)}</div>
-        </div>
-        <div><div class="exp-dates">${esc(feat.dates)}</div><div class="exp-note">${esc(feat.note)}</div></div>
-      </div>
-      ${featShots ? `<div class="exp-shots">${featShots}</div>` : ""}
-      <div class="exp-oneline">${esc(feat.oneLine)}</div>
-      <div class="btn-row">${stores}</div>
-      <ul class="bullets">${feat.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
-    </div>`;
-
-  const sb = d.experience.find(e=>!e.featured);
-  const sbLinks = sb.links.map((l,i)=>linkBtn(l, i===sb.links.length-1, 'simpleBalance')).join("");
-  const sbFig = sb.image
-    ? `<figure class="exp-figure"><img src="${sb.image}" alt="${esc(sb.name)}">`
-      + (sb.imageCaption ? `<figcaption>${esc(sb.imageCaption)}</figcaption>` : "")
-      + `</figure>`
-    : "";
-  const sbHtml = `
-    <div class="card">
-      <div class="exp-top">
-        <div>
-          <div class="exp-name">${esc(sb.name)}</div>
-          <div class="exp-role">${esc(sb.role)} · ${esc(sb.platform)}</div>
-        </div>
-        <div class="exp-dates">${esc(sb.dates)}</div>
-      </div>
-      ${sbFig}
-      <ul class="bullets">${sb.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
-      <div class="btn-row">${sbLinks}</div>
-    </div>`;
 
   const projs = d.projects.map((p,pi)=>{
     const tags = p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("");

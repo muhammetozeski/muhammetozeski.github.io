@@ -266,6 +266,7 @@ const DATA = {
   experience: [
     {
       featured: true,
+      featuredText: "Featured · Shipped to both stores",
       name: "CulturEnglish — Cross-Platform Mobile App",
       role: "Solo Software Architect & Developer · .NET 10 · MAUI Blazor Hybrid",
       dates: "April 2026 – June 2026",
@@ -289,6 +290,26 @@ const DATA = {
       ]
     },
     {
+      featured: true,
+      featuredText: "Enterprise Architecture · AI-Assisted Scale",
+      name: "VirusTotal Scanner — Enterprise Security Suite",
+      role: "Senior Software Architect & Developer · C# · WinForms",
+      dates: "Jan 2024 – Present",
+      shots: [ "resimler/VirusTotalProject.png" ],
+      links: [
+        { label: "Source Code", href: "https://github.com/MuhammetOzeski/VirusTotalScanner", type: "github" }
+      ],
+      oneLine: "A massive, 20,000+ LOC enterprise-grade desktop security utility comprised of over 60 core C# services. I solo-architected the system and authored 120+ technical RFCs, utilizing AI strictly as an implementation engine to exponentially scale output while maintaining absolute architectural control.",
+      bullets: [
+        "Architected a massive 20,000+ line codebase utilizing an extremely disciplined, document-driven development lifecycle.",
+        "Authored over 120 comprehensive architectural design documents (RFCs), defining rigid concurrency and memory constraints before leveraging Claude Code as an implementation accelerator.",
+        "Implemented aggressive memory optimization using ArrayPool for 1 MB hashing buffers, eradicating GC latency spikes during recursive folder sweeps.",
+        "Built deep OS-level integrations using WMI (Win32_ProcessStartTrace) to intercept and scan unknown processes the exact moment they execute.",
+        "Engineered a zero-quota API fallback using a headless Chromium WebView2 instance, successfully hooking into WebResourceResponseReceived to bypass invisible reCAPTCHAs.",
+        "Designed resilient local storage via AtomicFile JSON saves and a strictly filtered BindingList event storm handler to maintain 60fps UI even with massive row counts."
+      ]
+    },
+    {
       name: "The Simple Balance — Commercial Game",
       role: "Lead Developer · Unity · C#",
       dates: "September 2024 – July 2025",
@@ -299,6 +320,38 @@ const DATA = {
       bullets: [
         "Hired by the project owner (Kai Niklas) as lead developer to take a ~65%-complete game to a published Steam release.",
         "Built the remaining 5 levels, a random encounter system and other gameplay systems, designed and added new quests and stories, fixed bugs, and published the title on Steam in July 2025."
+      ]
+    },
+    {
+      name: "YoutubePlaylistSynchroniszer — Desktop Media Sync",
+      role: "Solo Developer · C# · WinForms",
+      dates: "Jun 2026 – Present",
+      platform: "Windows",
+      links: [
+        { label: "Source Code", href: "https://github.com/muhammetozeski/YoutubePlaylistSynchroniszer", type: "github" }
+      ],
+      bullets: [
+        "Built a robust desktop application that keeps local folders locked in sync with YouTube playlists (including private/unlisted), featuring a Google OAuth PKCE loopback flow.",
+        "Engineered a headless background daemon mode specifically designed for startup execution without UI overhead, utilizing system tray integrations.",
+        "Implemented a highly resilient task pipeline with Polly, handling transient network errors and API quotas through exponential backoff.",
+        "Designed a resolution-independent, tabbed GUI structure in WinForms that natively scales to any DPI without absolute coordinates.",
+        "Integrated a secure credential management system using DPAPI to encrypt refresh tokens locally without exposing secrets."
+      ]
+    },
+    {
+      name: "Codec2Player (SmallestApk) — Ultra-Minimal Android App",
+      role: "Solo Developer · Java",
+      dates: "Jun 2026 – Present",
+      platform: "Android",
+      links: [
+        { label: "Source Code", href: "https://github.com/muhammetozeski/Codec2Player", type: "github" }
+      ],
+      bullets: [
+        "Developed an ultra-minimalist Android audio player prioritizing the absolute smallest installed footprint on the device (~20 KB installed).",
+        "Engineered the application using pure Java and core Android components, completely stripping out heavyweight libraries like AndroidX and Kotlin runtime.",
+        "Discovered and utilized a mechanism to bypass Android's ART 'dex2oat' compilation, ensuring the installed size on the device remains strictly identical to the raw APK size.",
+        "Implemented a custom cache management lifecycle that automatically purges application data on closure, guaranteeing near-zero residual data bloat.",
+        "Created a completely automated, offline-capable build pipeline using PowerShell and portable JDK/SDK tools to build and sign EC-based v1-only APKs."
       ]
     }
   ],
@@ -568,49 +621,53 @@ function render(){
   `;
 
   /* ===== MAIN ===== */
-  const feat = d.experience.find(e=>e.featured);
-  const stores = feat.storeBadges.map((s,i)=>{
-    const last = i === feat.storeBadges.length-1;
-    return `<a class="store-badge" href="${s.href}" target="_blank" rel="noopener">`
-      + `<img src="${s.badge}" alt="${esc(s.label)}">` + (last ? clickIcon('stores') : "") + `</a>`;
+  const expHtml = d.experience.map((exp, expIdx) => {
+    if (exp.featured) {
+      const stores = (exp.storeBadges||[]).map((s,i)=>{
+        const last = i === exp.storeBadges.length-1;
+        return `<a class="store-badge" href="${s.href}" target="_blank" rel="noopener">`
+          + `<img src="${s.badge}" alt="${esc(s.label)}">` + (last ? clickIcon('stores') : "") + `</a>`;
+      }).join("");
+      const links = (exp.links||[]).map((l,i)=>linkBtn(l, i===exp.links.length-1, 'exp-'+expIdx)).join("");
+      const featShots = (exp.shots||[]).map(s=>`<img src="${s}" alt="${esc(exp.name)}">`).join("");
+      
+      return `
+        <div class="card feat">
+          <div class="exp-top">
+            <div>
+              <span class="feat-badge">${esc(exp.featuredText || "Featured")}</span>
+              <div class="exp-name">${esc(exp.name)}</div>
+              <div class="exp-role">${esc(exp.role)}</div>
+            </div>
+            <div><div class="exp-dates">${esc(exp.dates)}</div>${exp.note ? `<div class="exp-note">${esc(exp.note)}</div>` : ''}</div>
+          </div>
+          ${featShots ? `<div class="exp-shots">${featShots}</div>` : ""}
+          ${exp.oneLine ? `<div class="exp-oneline">${esc(exp.oneLine)}</div>` : ""}
+          <div class="btn-row">${stores}${links}</div>
+          <ul class="bullets">${exp.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+        </div>`;
+    } else {
+      const links = (exp.links||[]).map((l,i)=>linkBtn(l, i===exp.links.length-1, 'simpleBalance')).join("");
+      const sbFig = exp.image
+        ? `<figure class="exp-figure"><img src="${exp.image}" alt="${esc(exp.name)}">`
+          + (exp.imageCaption ? `<figcaption>${esc(exp.imageCaption)}</figcaption>` : "")
+          + `</figure>`
+        : "";
+      return `
+        <div class="card">
+          <div class="exp-top">
+            <div>
+              <div class="exp-name">${esc(exp.name)}</div>
+              <div class="exp-role">${esc(exp.role)}${exp.platform ? ` · ${esc(exp.platform)}` : ''}</div>
+            </div>
+            <div class="exp-dates">${esc(exp.dates)}</div>
+          </div>
+          ${sbFig}
+          <ul class="bullets">${exp.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+          <div class="btn-row">${links}</div>
+        </div>`;
+    }
   }).join("");
-  const featShots = (feat.shots||[]).map(s=>`<img src="${s}" alt="${esc(feat.name)}">`).join("");
-  const featHtml = `
-    <div class="card feat">
-      <div class="exp-top">
-        <div>
-          <span class="feat-badge">Featured · Shipped to both stores</span>
-          <div class="exp-name">${esc(feat.name)}</div>
-          <div class="exp-role">${esc(feat.role)}</div>
-        </div>
-        <div><div class="exp-dates">${esc(feat.dates)}</div><div class="exp-note">${esc(feat.note)}</div></div>
-      </div>
-      ${featShots ? `<div class="exp-shots">${featShots}</div>` : ""}
-      <div class="exp-oneline">${esc(feat.oneLine)}</div>
-      <div class="btn-row">${stores}</div>
-      <ul class="bullets">${feat.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
-    </div>`;
-
-  const sb = d.experience.find(e=>!e.featured);
-  const sbLinks = sb.links.map((l,i)=>linkBtn(l, i===sb.links.length-1, 'simpleBalance')).join("");
-  const sbFig = sb.image
-    ? `<figure class="exp-figure"><img src="${sb.image}" alt="${esc(sb.name)}">`
-      + (sb.imageCaption ? `<figcaption>${esc(sb.imageCaption)}</figcaption>` : "")
-      + `</figure>`
-    : "";
-  const sbHtml = `
-    <div class="card">
-      <div class="exp-top">
-        <div>
-          <div class="exp-name">${esc(sb.name)}</div>
-          <div class="exp-role">${esc(sb.role)} · ${esc(sb.platform)}</div>
-        </div>
-        <div class="exp-dates">${esc(sb.dates)}</div>
-      </div>
-      ${sbFig}
-      <ul class="bullets">${sb.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
-      <div class="btn-row">${sbLinks}</div>
-    </div>`;
 
   const projs = d.projects.map((p,pi)=>{
     const tags = p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("");
@@ -646,8 +703,7 @@ function render(){
 
     <section>
       <div class="sec-head"><div class="num">2</div><h2>Experience</h2><div class="bar"></div></div>
-      ${featHtml}
-      ${sbHtml}
+      ${expHtml}
     </section>
 
     <section>
