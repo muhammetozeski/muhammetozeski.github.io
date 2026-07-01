@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -198,9 +198,10 @@
 
   /* projects */
   .proj-grid{display:block; margin-top:11px;}
+  .proj-grid::after{content:""; display:table; clear:both;}
   .proj{background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden;
-    box-shadow:var(--shadow); break-inside:avoid; display:inline-flex; flex-direction:column;
-    width:236px; margin-right:11px; margin-bottom:11px; vertical-align:top;}
+    box-shadow:var(--shadow); break-inside:avoid; display:flex; flex-direction:column;
+    float:left; width:236px; margin-right:11px; margin-bottom:11px;}
   .proj-img{width:100%; height:96px; object-fit:cover; background:#eef2f0; display:block; border-bottom:1px solid var(--line);}
   .proj-img-multi{display:flex; width:100%; height:96px; background:#eef2f0; border-bottom:1px solid var(--line);}
   .proj-img-multi img{flex:1; min-width:0; object-fit:cover; border-right:1px solid var(--line);}
@@ -333,7 +334,7 @@ const DATA = {
   // Proje açıklamaları PDF'ten VERBATIM:
   projects: [
     {
-      name: "YoutubePlaylistSynchroniszer", kind: "C# · WinForms", tags: ["OAuth", "Desktop", "Sync"], dates: "Jun 2026",
+      name: "Youtube Playlist Synchronizer", kind: "C# · WinForms", tags: ["OAuth", "Desktop", "Sync"], dates: "Jun 2026",
       image: "resimler/YoutubePlaylistSynchroniszer.png",
       desc: "A robust desktop application that keeps local folders locked in sync with YouTube playlists (including private/unlisted), featuring a Google OAuth PKCE loopback flow. Engineered a headless background daemon mode specifically designed for startup execution without UI overhead, utilizing system tray integrations.",
       links: [ { label: "Source Code", href: "https://github.com/muhammetozeski/YoutubePlaylistSynchroniszer", type: "github" } ]
@@ -661,7 +662,7 @@ function render(){
     const datesHtml = p.dates ? `<div style="font-size:9px; font-weight:700; color:var(--muted); text-align:right; white-space:nowrap;">${esc(p.dates)}</div>` : "";
     return `
       <div class="proj">
-        <img class="proj-img" src="${p.image}" alt="${esc(p.name)}">
+        ${Array.isArray(p.image) ? `<div class="proj-img-multi">${p.image.map(src=>`<img src="${src}" alt="">`).join("")}</div>` : `<img class="proj-img" src="${p.image}" alt="${esc(p.name)}">`}
         <div class="proj-body">
           <div style="display:flex; justify-content:space-between; align-items:flex-start;">
             <div class="proj-name">${esc(p.name)}</div>
